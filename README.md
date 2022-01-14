@@ -1,4 +1,4 @@
-# University of Minnesota RMarkdown thesis template
+# Testing Dissertation for UARK using {gopherdown}
 
 This is the unofficial University of Minnesota RMarkdown thesis template. You 
 can find a copy of this template at https://github.com/zief0002/gopherdown.
