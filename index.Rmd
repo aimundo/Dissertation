@@ -1,0 +1,115 @@
+---
+#
+# --------------- Required Information -----------------------------------------
+#
+title: "An Analysis of Something"
+author: "Kelly Rajanigandha Kapoor"  # Student's full legal name
+month: "December"                    # The month and year that degree requirements were met 
+year: "2021"
+advisor: "Michael G. Scott"
+# coadvisor: "James Halpert"         # Un-comment this line if you have a co-advisor
+#
+# ----------------- Degree -----------------------------------------------------
+#
+phd: true         # Change to phd: false if you are formatting a MA Thesis/Plan B Paper
+plan_b: false     # Change to plan_b: true if you are formatting a MA Plan B Paper
+#
+# ----------------- Rendering Options ------------------------------------------
+#
+knit: "bookdown::render_book"
+output: 
+  gopherdown::thesis_pdf:
+    latex-engine: xelatex
+#
+# ----------------- Fonts ------------------------------------
+#
+mainfont: "Times New Roman"
+sansfont: "Arial"
+monofont: "Courier"
+#
+# ----------------- Link Highlighting ------------------------------------
+#
+link-citations: true             # make citations clickable
+colored-not-bordered-links: true # use colored links; no border
+# Set link colors using HEX.
+# If printing a physical version of your thesis, you'll want to comment out the next three lines.
+#urlcolor-hex: "2C6DAC"     # web addresses
+#citecolor-hex: "2C6DAC"    # citations
+#linkcolor-hex: "2C6DAC"    # links to sections in your thesis
+#
+# ----------------- Bibliography/References ------------------------------------
+#
+bibliography: ["bib/references.bib", "bib/packages.bib"]
+csl: "csl/american-medical-association.csl"
+citation_package: "biblatex"
+biblatexoptions: [backend=biber,refsegment=chapter,defernumbers=true]
+# biblio-style: "apa"
+nocite: | 
+  @wickham:2019, @xie:2021a, @zhu:2021
+#
+# ----------------- Create List of tables and Figures --------------------------
+#
+toc: true
+lot: true
+lof: true
+#
+# ----------------- Optional Frontmatter --------------------------------------
+#
+acknowledgements: >
+  `r if(knitr:::is_latex_output()) gopherdown::inc("pre/00-acknowledgements.Rmd")`
+dedication: >
+  `r if(knitr:::is_latex_output()) gopherdown::inc("pre/00-dedication.Rmd")`
+abstract: >
+  `r if(knitr:::is_latex_output()) gopherdown::inc("pre/00-abstract.Rmd")`
+---
+
+<!-- 
+Above is the YAML (YAML Ain't Markup Language) header that includes a lot of
+metadata used to produce the document.  Be careful with spacing in this header!
+
+In the Optional Frontmatter section comment out or delete frontmatter you don't want
+For example, if you'd prefer to not include a Dedication, simply delete lines 67-68
+or add a # before them to comment them out.  
+
+If you'd like to include a comment that won't be produced in your resulting file
+enclose it in a block like this. 
+-->
+
+<!--
+If you receive a duplicate label error after knitting, make sure to delete the
+thesis.Rmd file and then knit again.
+-->
+
+
+
+
+```{r setup, echo=FALSE, cache=FALSE, message=FALSE}
+## Load libraries
+library(formatR)
+library(knitr)
+library(kableExtra)
+library(tidyverse)
+
+## Set global options
+options(
+  max.print = "60",   #Printing width
+  scipen = 5,         #Penalty for scientific notation
+  knitr.kable.na = '' #Leave a blank space instead of printing NA in kable() tables
+  )
+
+## Set default knitr chunk options
+opts_chunk$set(
+  prompt = FALSE, 
+  comment = NA, 
+  message = FALSE, 
+  warning = FALSE, 
+  tidy = "formatR",
+  tidy.opts = list(width.cutoff = 60),
+  fig.width = 6, 
+  fig.height = 6,
+  fig.align = 'center', 
+  out.width = '40%'
+  )
+```
+
+

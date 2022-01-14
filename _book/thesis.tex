@@ -1,0 +1,1125 @@
+%% ------------------------------------------------------------------- %%
+%% Preamble
+%% ------------------------------------------------------------------- %%
+
+\documentclass[11pt]{umnthesis}
+% \usepackage[backend=biber,
+%     bibencoding=utf8,
+%     refsegment=chapter,
+%     style=numeric, 
+%     giveinits=true,
+%     isbn=false,
+%     doi=true,
+%     url=false,
+%     clearlang=true,
+%     defernumbers=true,
+% ]{biblatex}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}      % Select font encoding
+\usepackage[utf8]{inputenc}   % Accept different input encodings
+\usepackage{csquotes}         % Advanced facilities for inline and display quotations
+\usepackage{caption}          % Captioning options
+
+%% ------------------------------------------------------------------- %%
+%% Better tables
+%% ------------------------------------------------------------------- %%
+
+\usepackage{longtable}  % Allow tables that break across pages
+\usepackage{booktabs}   % Better formatted tables
+\usepackage{multirow}   % Allow for row spans
+\usepackage{pdflscape}  % Landscape page orientation
+\usepackage{tabu}       % Flexible tables
+
+%% --------------- Define \thead{} --------------- %%
+
+\usepackage{makecell}          % Allow breaks in table cells; header alignment
+\renewcommand{\theadalign}{bc} % Set table header alignment: bottom, center
+
+
+%% ------------------------------------------------------------------- %%
+%% Define TOC counters
+%% ------------------------------------------------------------------- %%
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+
+%% ------------------------------------------------------------------- %%
+%% Define captioning for tables and figures (default = APA)
+%% ------------------------------------------------------------------- %%
+
+\captionsetup[table]{textfont={it}, labelfont={}, justification=raggedright, skip=0pt, singlelinecheck=false, labelsep=newline}
+\captionsetup[figure]{textfont={}, labelfont={it}, justification=raggedright, singlelinecheck=false, labelsep=period}
+
+
+%% ------------------------------------------------------------------- %%
+%% Figure/table floating
+%% ------------------------------------------------------------------- %%
+
+%% Do not float figures/tables
+\usepackage{float} 
+\floatplacement{figure}{H}
+
+
+%% ------------------------------------------------------------------- %%
+%% Support for hyperreferences/links 
+%% ------------------------------------------------------------------- %%
+
+\usepackage{xurl}   % Allow URL breaks
+
+
+%% --------------- Define link colors --------------- %%
+
+
+
+%% --------------- Bordered links --------------- %%
+
+\hypersetup{
+  hidelinks,
+  colorlinks,
+  linktocpage=false,
+  linkcolor=.,
+  urlcolor=.,
+  citecolor=.
+}
+
+
+%% --------------- No colored links --------------- %%
+
+
+
+%% ------------------------------------------------------------------- %%
+%% Subfigures 
+%% ------------------------------------------------------------------- %%
+
+\makeatletter
+
+
+\@ifundefined{showcaptionsetup}{}{%
+  \PassOptionsToPackage{caption=false}{subfig}}
+%\usepackage{subfig}
+\makeatother
+
+
+% %% ------------------------------------------------------------------- %%
+% %% These additions are from {rticles} to make the references play nice with pandoc
+% %% ------------------------------------------------------------------- %%
+
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {}%
+  {\par}
+
+% For Pandoc 2.11+
+% As noted by @mirh [2] is needed instead of [3] for 2.12
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc} % for calculating minipage widths
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+
+%% ------------------------------------------------------------------- %%
+%% Include additional LaTeX packages/commands 
+%% ------------------------------------------------------------------- %%
+
+% \usepackage{dcolumn}    % Used to align decimal point in table columns
+% \usepackage{latexsym}   % Add LaTeX symbols
+% \usepackage{lmodern}    % Latin modern fonts
+
+%% --------------- Centered table columns --------------- %%
+
+% \usepackage{array}
+% \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+
+%% --------------- textsquare from amsthm --------------- %%
+ 
+% \DeclareRobustCommand{\textsquare}{\begingroup\usefont{U}{msa}{m}{n}\thr@@\endgroup}
+
+
+%% --------------- Example environment --------------- %%
+
+% \usepackage[thmmarks,amsmath]{ntheorem}
+% \theoremstyle{break}
+% \theorembodyfont{\rm}
+% \theoremsymbol{\textsquare}
+% \setlength\theorempreskipamount{\baselineskip}
+% \newtheorem{example}{Example}[chapter]
+% \labelformat{example}{Example~#1}
+
+
+%% --------------- Proof environment --------------- %%
+
+% \newtheorem{proof}{Proof}[chapter]
+% \labelformat{proof}{Proof~#1}
+
+
+%% --------------- Useful math operators --------------- %%
+
+% \DeclareMathOperator{\Var}{Var}
+% \DeclareMathOperator{\Cov}{Cov}
+% \DeclareMathOperator{\Unif}{Unif}
+% \DeclareMathOperator{\Poi}{Poi}
+
+% from Prof. Weisberg:
+% \DeclareMathOperator{\indep}{\;\,\rule[0em]{.03em}{.6em}\hspace{-.25em}%
+% 	\rule[0em]{.65em}{.03em}\hspace{-.25em}\rule[0em]{.03em}{.6em}\;\,} 
+
+
+
+%% ------------------------------------------------------------------- %%
+%% Define things from the YAML in the index.RMD file
+%% ------------------------------------------------------------------- %%
+
+\title{An Analysis of Something}
+\author{Kelly Rajanigandha Kapoor}
+\month{December}
+\year{2021}
+\advisor{Michael G. Scott}
+
+
+
+
+%% ------------------------------------------------------------------- %%
+%% Document body
+%% ------------------------------------------------------------------- %%
+
+\begin{document}
+
+\frenchspacing % one space after sentences
+
+
+%% --------------- Signature, title, and copyright pages --------------- %%
+
+\makesignaturepage % required by UMN
+\maketitlepage % required by UMN
+\makecopyrightpage % recommended, required if registering copyright
+
+
+%% --------------- Frontmatter --------------- %%
+
+\frontmatter
+\pagestyle{empty} % this removes page numbers from the frontmatter
+
+
+%% --------------- Acknowledgements --------------- %%
+
+  \begin{acknowledgements}
+    I would like to acknowledge\ldots Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel eros sed mauris porttitor semper nec a orci. Nullam vestibulum mi nec condimentum posuere. Pellentesque eget diam id sapien aliquet ullamcorper. Pellentesque blandit nec lectus ut mollis. Praesent in facilisis justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed eget congue leo, sed consequat libero. In rutrum malesuada nisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi sollicitudin tortor ut sem facilisis mollis.
+  \end{acknowledgements}
+
+
+%% --------------- Dedication --------------- %%
+
+  \begin{dedication}
+    This is for my mother who paved the way.
+  \end{dedication}
+
+
+%% --------------- Abstract --------------- %%
+
+  \begin{abstract}
+    This is an abstract that is the tldr; for my dissertation.
+  \end{abstract}
+
+
+%% --------------- Table of contents --------------- %%
+
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\renewcommand{\contentsname}{Table of Contents}
+
+\setlength{\parskip}{0pt}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\tableofcontents{}
+
+
+%% --------------- List of tables --------------- %%
+
+  \cleardoublepage
+  \addcontentsline{toc}{chapter}{List of Tables}
+  \listoftables
+
+
+%% --------------- List of figures --------------- %%
+
+  \cleardoublepage
+  \addcontentsline{toc}{chapter}{List of Figures} 
+  \listoffigures
+
+
+%% --------------- Mainmatter --------------- %%
+
+% Here the regular arabic numbering starts
+
+\mainmatter 
+\pagestyle{fancyplain} % turns page numbering back on
+
+\begin{verbatim}
+Warning: package 'formatR' was built under R version 4.1.2
+\end{verbatim}
+
+\begin{verbatim}
+Warning: package 'knitr' was built under R version 4.1.2
+\end{verbatim}
+
+\begin{verbatim}
+Warning: package 'kableExtra' was built under R version 4.1.2
+\end{verbatim}
+
+\begin{verbatim}
+Warning: package 'readr' was built under R version 4.1.2
+\end{verbatim}
+
+\hypertarget{introduction}{%
+\chapter{Introduction}\label{introduction}}
+
+This dissertation focuses on colorectal cancer (CRC). A murine primary model of colorectal cancer was used to study tumor response using diffuse reflectance spectroscopy ()
+
+\hypertarget{colorectal-cancer}{%
+\section{Colorectal cancer}\label{colorectal-cancer}}
+
+Colorectal cancer is defined as malignant growth of tissue (neoplasia) of the large intestine and rectum\textsuperscript{\protect\hyperlink{ref-moeslein2001}{1}}. This disease ranks 2nd in terms of mortality US, with an estimated 53,200 deaths for 2020\textsuperscript{\protect\hyperlink{ref-siegel2020}{2}}, despite a reduction in incidence over the last 30 years as a result of early screening and improved diagnostics\textsuperscript{\protect\hyperlink{ref-siegel2020}{2}}. About 50\% of the patients that have locally-advanced disease will develop metastasis as the tumor classification progresses in this stage, while the recurrence-free survival rates decline from 89\% to 55\% for a 5-year follow up {[}tsikitis2014{]}. For both men and women CRC ranks third in terms of incidence (9\% and 8\% of total new cases, respectively)\textsuperscript{\protect\hyperlink{ref-siegel2020}{2}}. The estimated annual economic burden of CRC in the US has been estimated between 5.3 and 6.5 billion dollars (2000 prices)\textsuperscript{\protect\hyperlink{ref-jansman2007}{3}}. A worrying trend is seen by an increase in incidence in those below age 50 with a 2\% annual increase\textsuperscript{\protect\hyperlink{ref-benson2020}{4}}.
+
+\hypertarget{diagnosis-of-crc}{%
+\subsection{Diagnosis of CRC}\label{diagnosis-of-crc}}
+
+Screening for CRC is recommended for men and women above 50 years of age, and diagnostic evaluations are required symptomatic individuals that present rectal bleeding, abdominal pain, mucus in the stool, anemia, abdominal mass, or weight loss\textsuperscript{\protect\hyperlink{ref-mccormick2002}{5}}. Colonoscopy, the gold standard for CRC diagnosis and screening, is presented in detail next.
+
+\hypertarget{colonoscopy}{%
+\subsubsection{Colonoscopy}\label{colonoscopy}}
+
+The assessment of CRC requires a visual examination of the colon, and therefore colonoscopy is the standard for screening, diagnosis and surveillance both in CRC and ulcerative colitis\textsuperscript{\protect\hyperlink{ref-siegel2017}{6},\protect\hyperlink{ref-lieberman2014}{7}}. Colonoscopy requires bowel preparation before the procedure, which involves emptying the intestine of fecal matter without gross or histologic alteration of the colonic mucosa\textsuperscript{\protect\hyperlink{ref-saltzman2015}{8}}. For the colonoscopic procedure, a colonoscope (a flexible tube that contains a fiberoptic light bundle, a biopsy forceps and other accessories) is inserted slowly into the patient to allow visual examination of the colon. On average, a colonoscopy with adequate bowel preparation lasts between 21 to 32 minutes when performed under sedation\textsuperscript{\protect\hyperlink{ref-lin2017}{9},\protect\hyperlink{ref-shehadeh2020}{10}}. Additional to the visual inspection, the goal of colonoscopy is to remove polyps (polypectomy), or biopsy acquisition for pathological evaluation; computed tomography colonography (CT) is used in conjunction as it allows to determine the staging of the disease\textsuperscript{\protect\hyperlink{ref-duloy2018}{11}}.
+
+Whereas CT, nuclear magnetic resonance (NMR), endorectal ultrasonography (USG), positron emission computed tomography (PET), and fecal occult test are technologies used to diagnose CRC\textsuperscript{\protect\hyperlink{ref-widerska2014}{12}}, only colonoscopy allows direct visualization of the colonic mucosa while allowing tissue acquisition\textsuperscript{\protect\hyperlink{ref-brown2019}{13}}. However, colonoscopy is a technically challenging procedure due to its endoscopic nature; the results are largely impacted by the level of training and experience of the endoscopist\textsuperscript{\protect\hyperlink{ref-boo2015}{14}} and miss rates for the detection of polyps that are smaller than 10 mm or flat is a significant limitation\textsuperscript{\protect\hyperlink{ref-leufkens2012}{15},\protect\hyperlink{ref-vanrijn2006}{16}}.
+
+To address the limitation of polyp missing rates, deep learning algorithms such as convolutional neural networks (CNNs) have been used to automatically detect polyps in colonoscopy videos with up to 88\% sensitivity\textsuperscript{\protect\hyperlink{ref-tajbakhsh2016}{17},\protect\hyperlink{ref-bernal2017}{18}}. Nonetheless, the implementation of CNNs is limited by the interpretability of the results, the time required for expert labeling, and the legal and ethical implications of the use of patient data and images in the development of commercially available algorithms\textsuperscript{\protect\hyperlink{ref-pacal2020}{19}}.
+
+\hypertarget{crc-staging}{%
+\subsubsection{CRC Staging}\label{crc-staging}}
+
+As mentioned previously, colonoscopy and CT are used to determine the progression of CRC. The most common used staging system is the American Joint Committee on Cancer (AJCC) tumor-node-metastasis system (TNM): Under this system, tumor progression is classified using the letter ``T'', lymph node invasion with the letter ``N'' and metastasis with the letter ``M''\textsuperscript{\protect\hyperlink{ref-ajcc2017}{20}}. For example, a tumor that is found to have invaded the muscularis propria with one regional lymph positive and no distant metastasis would be classified as T2 N1a M0. Prognostically, the AJCC TNM system classifies tumors between stages 0 to IV\textsuperscript{\protect\hyperlink{ref-greene2002}{21}}, with each stage between I and IV being further sub-categorized from A to C\textsuperscript{\protect\hyperlink{ref-ajcc2017}{20}}. Following on the previous example (T2 N1a M0 tumor) the corresponding prognostic classification would be IIIA.
+
+The term ``locally advanced disease'' is used for prognosis in patients with tumors in the colonic mucosa, or that have grown through the submucosa or muscularis propria and may have spread to lymph nodes, but that do not have spread to distant sites; in the TNM system these tumors correspond to stages IIA to IIIC, for which therapy is specified by the National Comprehensive Cancer Network (NCCN) guidelines\textsuperscript{\protect\hyperlink{ref-benson2011}{22}}.
+
+\hypertarget{chemotherapy}{%
+\subsection{Chemotherapy}\label{chemotherapy}}
+
+\hypertarget{adjuvant-and-neoadjuvant-strategies}{%
+\subsubsection{Adjuvant and Neoadjuvant strategies}\label{adjuvant-and-neoadjuvant-strategies}}
+
+Until 2018, the NCCN guidelines for colon cancer\textsuperscript{\protect\hyperlink{ref-benson2018}{23}} indicated the use of post-operative chemotherapy (adjuvant chemotherapy) following colectomy. However, in 2020 the NCCN guidelines recommended the use of neoadjuvant chemotherapy (NAC, also known as pre-operative chemotherapy) in locally advanced rectal cancer\textsuperscript{\protect\hyperlink{ref-benson2020}{4}}. The results of the FOxTROT trial, an international randomized trial to assess the efficacy of NAC in colon cancer indicated that the use of NAC in CRC was safe, with histological regression in 59\% of the patients\textsuperscript{\protect\hyperlink{ref-seymour2019}{24}}. Ongoing clinical studies to assess the efficacy of NAC using different drugs are still undergoing\textsuperscript{\protect\hyperlink{ref-roth2020}{25}}.
+
+In 2021 ``total neoadjuvant therapy'', a combination of NAC and chemoradiotherapy before surgical resection was recommended as the standard of care for locally advanced colorectal cancer\textsuperscript{\protect\hyperlink{ref-venook2021}{26}}. The drug regimen used is FOLFOX, an intravenous therapy consisting of oxaliplatin, leucovorin and 5-fluorouracil (5-FU). The dosing consists of 100 mg/m\textsuperscript{2}, 200 mg/m\textsuperscript{2} of leucovorin given over 2 hours followed by bolus 5-FU at a dose of 400 mg/m\textsuperscript{2} and a 46-h infusion of 5-FU at 2400 mg/ m\textsuperscript{2}. This cycle is repeated every 2 weeks and the overall treatment comprises 3 or 4 cycles (total 6-8 weeks)\textsuperscript{\protect\hyperlink{ref-kato2010}{27},\protect\hyperlink{ref-karoui2015}{28}}.
+
+\hypertarget{the-folfox-regimen-drugs-and-scheduling}{%
+\subsubsection{The FOLFOX regimen: drugs and scheduling}\label{the-folfox-regimen-drugs-and-scheduling}}
+
+The antimetabolite drug 5-FU is the principal component of the FOLFOX regimen. Its mechanism of action in this drug regimen is based in the transcriptional inhibition of the enzyme thymidylate synthase (TS), a nucleotide-synthesizing enzyme. The drug is converted to fluorodeoxyuridine monophosphate, forming a stable complex with the enzyme and 5,10-methylenetetrahydrofolate which results in a reversible inactivation of the enzyme, leading to DNA and RNA damage\textsuperscript{\protect\hyperlink{ref-housman2014}{29},\protect\hyperlink{ref-longley2003}{30}}.
+
+Leucovorin is a source of folate used to modulate the binding of the 5-FU metabolites to TS, and oxaliplatin ofrms links between two adjacent guanidine residues or also between guanidine or adenine, thus disrupting DNA replication and transcription\textsuperscript{\protect\hyperlink{ref-longley2003}{30},\protect\hyperlink{ref-arango2004}{31}}.
+
+Regarding scheduling, it has been previously mentioned that the active intravenous injection/bolus phase of the FOLFOX regimen comprises 48 h, and that the cycle is repeated every two weeks\textsuperscript{\protect\hyperlink{ref-karoui2015}{28}}. The reasons for the cycling are its toxicity and associated side-effects which include oxaliplatin-induced neurotoxicity\textsuperscript{\protect\hyperlink{ref-tsai2016}{32}},and gastrointestinal system symptoms such as nausea and vomiting\textsuperscript{\protect\hyperlink{ref-wielahojeska2015}{33}}. Moreover, the required cycling due to the use of high doses of chemotherapeutic agents (known as ``maximum tolerated doses'') has other therapeutic implications which will be discussed in the next section.
+
+\hypertarget{maximum-tolerated-doses-challenges-of-a-historical-view-of-therapy}{%
+\subsubsection{Maximum tolerated doses: Challenges of a historical view of therapy}\label{maximum-tolerated-doses-challenges-of-a-historical-view-of-therapy}}
+
+The dosing paradigm in chemotherapy relies on the corollary ``more is better'', which translates in using maximum tolerated doses (MTDs), the largest possible amount of a drug that can given to the patient. In reality, the rationale for the use of MTD chemotherapy has historic roots: MTD chemotherapy was successful to treat acute lymphoblastic leukemia (ALL) in children\textsuperscript{\protect\hyperlink{ref-skipper1970}{34}}. In an era where physicians were obsessed with increasing treatment doses to maximize tumor cell killing, the finding that MTD chemotherapy could be successful to treat ALL helped to establish MTD as a dogma in oncology\textsuperscript{\protect\hyperlink{ref-mukherjee2010}{35}}. However, with high doses came high toxicity, and it became obvious that MTD chemotherapy required rest periods to allow the patient to recover\textsuperscript{\protect\hyperlink{ref-benzekry2013}{36}}.
+
+As the years passed by and oncology shifted from its empirical use of chemical warfare to treat cancer\textsuperscript{\protect\hyperlink{ref-porrata2001}{37}} to the understanding of the molecular intricacies of the disease, it was realized that MTD chemotherapy worked in ALL because it could completely eliminate the tumor clone, but that other types of cancer had characteristics that made MTD chemotherapy ineffective in the long run\textsuperscript{\protect\hyperlink{ref-kareva2015}{38}}. In fact, it is well established that regrowth and recurrence occur in most solid tumors where MTD chemotherapy is used\textsuperscript{\protect\hyperlink{ref-andre2011}{39}--\protect\hyperlink{ref-pasquier2010}{41}}; despite this, the concept of ``more is better'' remained unaltered in the 20th century even in the light of the limitations of MTD chemotherapy.
+
+\hypertarget{metronomic-chemotherapy-a-different-approach}{%
+\subsubsection{Metronomic Chemotherapy: A different approach}\label{metronomic-chemotherapy-a-different-approach}}
+
+A shift from the ``more is better'' corollary was proposed 16 years ago by the Kerbel and Bocci laboratories. Realizing the limitations of MTD chemotherapy, Browder \emph{et.al} examined the administration of lower and frequent doses of chemotherapeutic agents in a mouse xenograft model of lung carcinoma which led to to reduced tumor burden\textsuperscript{\protect\hyperlink{ref-browder2000}{42}}. This concept was also examined by Klement \emph{et. al} in a mouse model of neuroblastoma leading to diminished tumor vascularity and transiet tumor regression\textsuperscript{\protect\hyperlink{ref-klement2000}{43}}. Tthe term ``metronomic chemotherapy'' was coined to describe regimens of chemotherapeutic drugs at a lower and much frequent dosage than that used in MTD strategies, drawing an analogy from a \emph{metronome}, a musical instrument that produces regular fixed ticks\textsuperscript{\protect\hyperlink{ref-maiti2014}{44}}. One of the immediate advantages of metronomic chemotherapy (MET) is less toxicity for the patient\textsuperscript{\protect\hyperlink{ref-natale2017}{45}}.
+
+The main target of MET are the tumor endothelial cells, which cannot recover due to the continuous delivery of the therapy\textsuperscript{\protect\hyperlink{ref-kerbel2004}{46},\protect\hyperlink{ref-genfors2016}{47}}; it has been shown that MET leads to a reduction in the number of circulating pro-angiogenic endothelial cells due to a increase in thrombospondin 1 (TSP-1) which causes endothelial cell apoptosis and migration via CD36, while inhibiting proliferation\textsuperscript{\protect\hyperlink{ref-stoelting2008}{48}--\protect\hyperlink{ref-bocci2003}{50}}. Other anticancer properties of MET that have been reported include stimulation of the antitumor immune response and prevention of stromal activation\textsuperscript{\protect\hyperlink{ref-andre2017}{51}}.
+
+An important difference between MTD and MET is that the former uses an intravenous delivery, while the frequency of administration required for the latter makes oral intake the preferred method of delivery. For this reason capecitabine, or tegafur-uracil (both orally taken 5-FU prodrugs) are commonly used in MET strategies based on fluoropyrimidines\textsuperscript{\protect\hyperlink{ref-alagizy2015}{52}--\protect\hyperlink{ref-huang2017}{54}}. Capecitabine is converted to fluorouracil by the enzyme thymidine phosphorylase, which is found in higher levels in tumors than in normal tissue\textsuperscript{\protect\hyperlink{ref-walko2005}{55}}. Tegafur-uracil is a combination drug that can achieve and adequate fluoruracil plasma concentration with low toxicity rate\textsuperscript{\protect\hyperlink{ref-huang2017}{54}}.
+
+\hypertarget{metronomic-chemotherapy-as-a-neoadjuvant-strategy}{%
+\paragraph{Metronomic Chemotherapy as a neoadjuvant strategy}\label{metronomic-chemotherapy-as-a-neoadjuvant-strategy}}
+
+Clinical studies that have used MET have applied it to late-stage or recurrent cancers such as CRC or glioma to improve survival\textsuperscript{\protect\hyperlink{ref-huang2017}{54},\protect\hyperlink{ref-reardon2009}{56},\protect\hyperlink{ref-romiti2013}{57}}. As NAC, MET has been used in clinical studies of breast and ovary cancer where low toxicity and a high pathological response were observed in the first case\textsuperscript{\protect\hyperlink{ref-masuda2014}{58},\protect\hyperlink{ref-hildebrand2016}{59}}, and safety of this type of therapy was assessed in patients that were unfit for standard NAC\textsuperscript{\protect\hyperlink{ref-dessai2016}{60}}.
+However, it is not known what benefits MET could have when used as NAC in CRC. One of the main themes of this dissertation was assessing tumor response using MET NAC in a primary model of CRC to determine its biological effects and its potential to treat locally-advanced CRC.
+
+\hypertarget{in-new-territory-data-is-scarce}{%
+\paragraph{In new territory, data is scarce}\label{in-new-territory-data-is-scarce}}
+
+Because MET chemotherapy is a relatively new field, a wide range of variation in dosage and frequency of administration of different drugs exists the literature. For example, studies of MET in pediatric solid tumors have reported the administration of cyclophosphamide (an alkylating agent that disrupts DNA duplication) ranging from daily 30 mg/m\textsuperscript{2} to 25 or 50 mg/m\textsuperscript{2} using a 2-week cycle\textsuperscript{\protect\hyperlink{ref-stempak2006}{61},\protect\hyperlink{ref-kumarage2020}{62}}.
+
+Indeed, the pharmacokinetics (dose-concentration relationship) are not established for most MET regimens and the frequency and concentration of each drug are determined in a highly empirical manner\textsuperscript{\protect\hyperlink{ref-bocci2016}{63}}.This lack of standardization among different MET strategies poses a limitation in the determination of their effectiveness and any potential changes in their mechanisms of action.
+
+However, whereas in MTD NAC (FOLFOX regimen) 5-FU has a mechanism of action based solely on DNA disruption\textsuperscript{\protect\hyperlink{ref-housman2014}{29}}, it has been found that in MET chemotherapy 5-FU or its prodrugs (such as capecitabine) inhibit cell proliferation\textsuperscript{\protect\hyperlink{ref-yuan2015}{64},\protect\hyperlink{ref-shi2014}{65}}. Even more importantly, the same studies have shown that used in a metronomic manner, fluoropyrimidines also impair blood vessel development in tumors.
+
+\hypertarget{angiogenesis-a-hallmark-of-cancer}{%
+\subsubsection{Angiogenesis: A Hallmark of cancer}\label{angiogenesis-a-hallmark-of-cancer}}
+
+The term angiogenesis refers to the development of new vasculature to provide a flux of oxygen and blood in the periphery and in the tumor itself, and is considered one of the ``hallmarks'' of cancer that facilitates tumor growth and metastasis\textsuperscript{\protect\hyperlink{ref-farnsworth2013}{66},\protect\hyperlink{ref-hanahan2011}{67}}. Under this premise, because tumors growth is restricted to \(\approx\) 2 mm\textsuperscript{3} without blood vessels\textsuperscript{\protect\hyperlink{ref-muthukkaruppan1982}{68}}, they develop blood vasculature by sprouting or intussusception from existing vessels\textsuperscript{\protect\hyperlink{ref-carmeliet2000}{69}}. The process is regulated by soluble factors and their receptors, among which vascular endothelial growth factor (VEGF) has a prominent role\textsuperscript{\protect\hyperlink{ref-hanahan2000}{70}}. The recognition of the importance of VEGF in tumor angiogenesis provided the rationale for researchers to study it as a therapeutic target\textsuperscript{\protect\hyperlink{ref-ferrara2004}{71}}.
+
+\hypertarget{vegf-and-its-role-as-a-therapeutic-target}{%
+\paragraph{VEGF and its role as a therapeutic target}\label{vegf-and-its-role-as-a-therapeutic-target}}
+
+In 1971, Folkman proposed anti-angiogenesis as an anticancer strategy, and multiple groups raced to find and isolate the ``tumor angiogenesis factor'', which was later identified as VEGF\textsuperscript{\protect\hyperlink{ref-ferrara2004}{71}}. It is now known that VEGF is a member of the platelet derived growth factor (PDGF) family, which includes VEGF (also known as VEGF-A), VEGF-B, VEGF-C and VEGF-D. There are at least four isoforms of VEGF-A, the 165-aminoacid form being the predominant species\textsuperscript{\protect\hyperlink{ref-carmeliet2005}{72}}. VEGF-A binds primarily to the receptor VEGFR2 that is located in the surface of endothelial cells (ECs, which line established blood vessels) to start the cascade of signals that lead to proliferation, migration, and vascular development\textsuperscript{\protect\hyperlink{ref-apte2019}{73}}.
+In tumors, VEGF-mediated angiogenesis of ECs is driven by chemothaxis, the migration toward a gradient of soluble attractants\textsuperscript{\protect\hyperlink{ref-lamalice2007}{74}}. Because tumors overexpress VEGF, its interaction with VEGFR2 in ECs causes migration by contributing to formation of stress fibers\textsuperscript{\protect\hyperlink{ref-lamalice2007}{74}}. The migration of ECs is a multi-step process controlled by different signaling pathways, among which the Notch pathway plays an important role\textsuperscript{\protect\hyperlink{ref-eilken2010}{75}}. It has been shown that when exposed to VEGF signaling, only some ECs acquire the ``tip cell'' phenotype (long and motile filopodia that extend towards the source of pro-angiogenic factors), while other ECs form the stalk of the vascular sprout.
+The complete sprouting process of ECs in angiogenesis includes breakdown of the basement membrane, and new extracellular matrix deposition around the extending sprout, loss of perycite coverage, and connection between bridging sprouts or nearby vessels (anastomosis), and assembly of new lumen-containig tubules {[}\textsuperscript{\protect\hyperlink{ref-lamalice2007}{74}}; eilken2010{]}.
+
+Targeting the VEGF pathway produced different drugs aimed at reducing tumor vasculature such as bevacizumab (monoclonal antibody that binds to VEGF) , sunitinib (VEGFR2 inhibitor), and aflibercept (VEGF inhibitor)\textsuperscript{\protect\hyperlink{ref-vasudev2014}{76}}. From these drugs, bevacizumab has been the most used and studied and can be given in metastatic CRC in conjuction with chemotherapy\textsuperscript{\protect\hyperlink{ref-benson2018}{23}}. However, further studies revealed that angiogenesis is a complex process that is not solely mediated by VEGF. Angiopoteins, transcription factors such as hypoxia inducible factor 1\(\alpha\) (HIF-1\(\alpha\)), cytokines, chemokines such as CXCL8, CXCL1, CCL2, chaperone proteins (such as HSP90), and the activation of certain pathways such as AkT or mTOR also elicit the formation of blood vessels. Additionally, monocytes, tumor associated macrophages and stromal cells are receptive of the gradient established by different chemokines causing them to migrate and contribute to new vessel formation\textsuperscript{\protect\hyperlink{ref-yaddanapudi2017}{77},\protect\hyperlink{ref-kryczek2007}{\textbf{kryczek2007?}}}.
+
+\hypertarget{hypoxia-its-implications-on-angiogenesis-and-metabolism}{%
+\subsubsection{Hypoxia: its implications on angiogenesis and metabolism}\label{hypoxia-its-implications-on-angiogenesis-and-metabolism}}
+
+One of the major drivers of the expression of VEGF is hypoxia (low oxygen tension). Under low oxygen conditions, gene transcription of the hypoxia inducible factors is allowed, the most important being HIF-1\(\alpha\), which in turn induces the expression of \emph{VEGF}, thus promoting angiogenesis\textsuperscript{\protect\hyperlink{ref-simon2017}{78}}. Under normoxic conditions, the \(\alpha\)-subunit of HIF-1 is ubiquitinated by the von-Hippel-Lindau protein (pVHL), and suffers proteasomal degradation\textsuperscript{\protect\hyperlink{ref-tirpe2019}{79}}. Under hypoxic conditions, the \(\alpha\) unit of HIF-1 is not ubiquitinated, and translocates into the nucleus, where it dimerizes with HIF-1\(\beta\), generating an active HIF-1 form that then activates the transcription of VEGF\textsuperscript{\protect\hyperlink{ref-tirpe2019}{79}}.
+
+Beyond regulating VEGF, HIF-1 also targets genes involved in glucose metabolism. It activates the transcription of the genes that encode the glucose transporters GLUT1 and GLUT3,
+
+\hypertarget{vegf-hif-1-independent-expression}{%
+\paragraph{VEGF HIF-1 independent expression}\label{vegf-hif-1-independent-expression}}
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-moeslein2001}{}}%
+\CSLLeftMargin{1. }
+\CSLRightInline{Moeslein G. Colon cancer. \emph{Encyclopedic Reference of Cancer}. Published online 2001:213-219. \url{http://search.ebscohost.com/login.aspx?direct=true\&AuthType=ip,sso\&db=a9h\&AN=23677758\&site=ehost-live\&scope=site\&custid=s8428489}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-siegel2020}{}}%
+\CSLLeftMargin{2. }
+\CSLRightInline{Siegel RL, Miller KD, Jemal A. Cancer statistics, 2020. \emph{{CA}: A Cancer Journal for Clinicians}. 2020;70(1):7-30. doi:\href{https://doi.org/10.3322/caac.21590}{10.3322/caac.21590}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-jansman2007}{}}%
+\CSLLeftMargin{3. }
+\CSLRightInline{Jansman FGA, Postma MJ, Brouwers JRBJ. Cost considerations in the treatment of colorectal cancer. \emph{{PharmacoEconomics}}. 2007;25(7):537-562. doi:\href{https://doi.org/10.2165/00019053-200725070-00002}{10.2165/00019053-200725070-00002}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-benson2020}{}}%
+\CSLLeftMargin{4. }
+\CSLRightInline{Benson AB, Venook AP, Al-Hawary MM, et al. {NCCN} guidelines insights: Rectal cancer, version 6.2020. \emph{Journal of the National Comprehensive Cancer Network}. 2020;18(7):806-815. doi:\href{https://doi.org/10.6004/jnccn.2020.0032}{10.6004/jnccn.2020.0032}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-mccormick2002}{}}%
+\CSLLeftMargin{5. }
+\CSLRightInline{McCormick D, Kibbe PJ, Morgan SW. Colon cancer: Prevention, diagnosis, treatment:{CE} test. \emph{Gastroenterology Nursing}. 2002;25(5):211-212. doi:\href{https://doi.org/10.1097/00001610-200209000-00007}{10.1097/00001610-200209000-00007}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-siegel2017}{}}%
+\CSLLeftMargin{6. }
+\CSLRightInline{Siegel RL, Fedewa SA, Anderson WF, et al. Colorectal cancer incidence patterns in the united states, 1974{\textendash}2013. \emph{{JNCI}: Journal of the National Cancer Institute}. 2017;109(8). doi:\href{https://doi.org/10.1093/jnci/djw322}{10.1093/jnci/djw322}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-lieberman2014}{}}%
+\CSLLeftMargin{7. }
+\CSLRightInline{Lieberman DA, Williams JL, Holub JL, et al. Colonoscopy utilization and outcomes 2000 to 2011. \emph{Gastrointestinal Endoscopy}. 2014;80(1):133-143.e3. doi:\href{https://doi.org/10.1016/j.gie.2014.01.014}{10.1016/j.gie.2014.01.014}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-saltzman2015}{}}%
+\CSLLeftMargin{8. }
+\CSLRightInline{Saltzman JR, Cash BD, Pasha SF, et al. Bowel preparation before colonoscopy. \emph{Gastrointestinal Endoscopy}. 2015;81(4):781-794. doi:\href{https://doi.org/10.1016/j.gie.2014.09.048}{10.1016/j.gie.2014.09.048}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-lin2017}{}}%
+\CSLLeftMargin{9. }
+\CSLRightInline{Lin OS. Sedation for routine gastrointestinal endoscopic procedures: A review on efficacy, safety, efficiency, cost and satisfaction. \emph{Intestinal Research}. 2017;15(4):456. doi:\href{https://doi.org/10.5217/ir.2017.15.4.456}{10.5217/ir.2017.15.4.456}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-shehadeh2020}{}}%
+\CSLLeftMargin{10. }
+\CSLRightInline{Shehadeh KS, Cohn AEM, Jiang R. A distributionally robust optimization approach for outpatient colonoscopy scheduling. \emph{European Journal of Operational Research}. 2020;283(2):549-561. doi:\href{https://doi.org/10.1016/j.ejor.2019.11.039}{10.1016/j.ejor.2019.11.039}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-duloy2018}{}}%
+\CSLLeftMargin{11. }
+\CSLRightInline{Duloy AM, Kaltenbach TR, Keswani RN. Assessing colon polypectomy competency and its association with established quality metrics. \emph{Gastrointestinal Endoscopy}. 2018;87(3):635-644. doi:\href{https://doi.org/10.1016/j.gie.2017.08.032}{10.1016/j.gie.2017.08.032}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-widerska2014}{}}%
+\CSLLeftMargin{12. }
+\CSLRightInline{Świderska M, Choromańska B, Dąbrowska E, et al. Review the diagnostics of colorectal cancer. \emph{Wsp{ó}{ł}czesna Onkologia}. 2014;1:1-6. doi:\href{https://doi.org/10.5114/wo.2013.39995}{10.5114/wo.2013.39995}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-brown2019}{}}%
+\CSLLeftMargin{13. }
+\CSLRightInline{Brown SR, Hicks TC, Whitlow CB. Diagnostic and therapeutic colonoscopy. In: \emph{Shackelford{\textquotesingle}s Surgery of the Alimentary Tract, 2 Volume Set}. Elsevier; 2019:1689-1699. doi:\href{https://doi.org/10.1016/b978-0-323-40232-3.00145-x}{10.1016/b978-0-323-40232-3.00145-x}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-boo2015}{}}%
+\CSLLeftMargin{14. }
+\CSLRightInline{Boo S-J, Jung JH, Park JH, et al. An adequate level of training for technically competent colonoscopic polypectomy. \emph{Scandinavian Journal of Gastroenterology}. 2015;50(7):908-915. doi:\href{https://doi.org/10.3109/00365521.2015.1006672}{10.3109/00365521.2015.1006672}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-leufkens2012}{}}%
+\CSLLeftMargin{15. }
+\CSLRightInline{Leufkens A, Oijen M van, Vleggaar F, Siersema P. Factors influencing the miss rate of polyps in a back-to-back colonoscopy study. \emph{Endoscopy}. 2012;44(05):470-475. doi:\href{https://doi.org/10.1055/s-0031-1291666}{10.1055/s-0031-1291666}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-vanrijn2006}{}}%
+\CSLLeftMargin{16. }
+\CSLRightInline{Rijn JC van, Reitsma JB, Stoker J, Bossuyt PM, Deventer SJ van, Dekker E. Polyp miss rate determined by tandem colonoscopy: A systematic review. \emph{The American Journal of Gastroenterology}. 2006;101(2):343-350. doi:\href{https://doi.org/10.1111/j.1572-0241.2006.00390.x}{10.1111/j.1572-0241.2006.00390.x}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-tajbakhsh2016}{}}%
+\CSLLeftMargin{17. }
+\CSLRightInline{Tajbakhsh N, Gurudu SR, Liang J. Automated polyp detection in colonoscopy videos using shape and context information. \emph{{IEEE} Transactions on Medical Imaging}. 2016;35(2):630-644. doi:\href{https://doi.org/10.1109/tmi.2015.2487997}{10.1109/tmi.2015.2487997}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-bernal2017}{}}%
+\CSLLeftMargin{18. }
+\CSLRightInline{Bernal J, Tajkbaksh N, Sanchez FJ, et al. Comparative validation of polyp detection methods in video colonoscopy: Results from the {MICCAI} 2015 endoscopic vision challenge. \emph{{IEEE} Transactions on Medical Imaging}. 2017;36(6):1231-1249. doi:\href{https://doi.org/10.1109/tmi.2017.2664042}{10.1109/tmi.2017.2664042}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-pacal2020}{}}%
+\CSLLeftMargin{19. }
+\CSLRightInline{Pacal I, Karaboga D, Basturk A, Akay B, Nalbantoglu U. A comprehensive review of deep learning in colon cancer. \emph{Computers in Biology and Medicine}. 2020;126:104003. doi:\href{https://doi.org/10.1016/j.compbiomed.2020.104003}{10.1016/j.compbiomed.2020.104003}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ajcc2017}{}}%
+\CSLLeftMargin{20. }
+\CSLRightInline{\emph{AJCC Cancer Staging Manual}. Eight edition / editor-in-chief, Mahul B. Amin, MD, FCAP ; editors, Stephen B. Edge, MD, FACS {[}and 16 others{]} ; Donna M. Gress, RHIT, CTR-Technical editor ; Laura R. Meyer, CAPM-Managing editor. American Joint Committee on Cancer, Springer; 2017.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-greene2002}{}}%
+\CSLLeftMargin{21. }
+\CSLRightInline{Greene FL, Stewart AK, Norton HJ. A new {TNM} staging strategy for node-positive (stage {III}) colon cancer. \emph{Annals of Surgery}. 2002;236(4):416-421. doi:\href{https://doi.org/10.1097/00000658-200210000-00003}{10.1097/00000658-200210000-00003}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-benson2011}{}}%
+\CSLLeftMargin{22. }
+\CSLRightInline{Benson AB, Arnoletti JP, Bekaii-Saab T, et al. Colon cancer. \emph{Journal of the National Comprehensive Cancer Network}. 2011;9(11):1238-1290. doi:\href{https://doi.org/10.6004/jnccn.2011.0104}{10.6004/jnccn.2011.0104}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-benson2018}{}}%
+\CSLLeftMargin{23. }
+\CSLRightInline{Benson AB, Venook AP, Al-Hawary MM, et al. {NCCN} guidelines insights: Colon cancer, version 2.2018. \emph{Journal of the National Comprehensive Cancer Network}. 2018;16(4):359-369. doi:\href{https://doi.org/10.6004/jnccn.2018.0021}{10.6004/jnccn.2018.0021}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-seymour2019}{}}%
+\CSLLeftMargin{24. }
+\CSLRightInline{Seymour MT, and DM. {FOxTROT}: An international randomised controlled trial in 1052 patients (pts) evaluating neoadjuvant chemotherapy ({NAC}) for colon cancer. \emph{Journal of Clinical Oncology}. 2019;37(15{\_}suppl):3504-3504. doi:\href{https://doi.org/10.1200/jco.2019.37.15_suppl.3504}{10.1200/jco.2019.37.15\_suppl.3504}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-roth2020}{}}%
+\CSLLeftMargin{25. }
+\CSLRightInline{Roth M, Eng C. Neoadjuvant chemotherapy for colon cancer. \emph{Cancers}. 2020;12(9):2368. doi:\href{https://doi.org/10.3390/cancers12092368}{10.3390/cancers12092368}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-venook2021}{}}%
+\CSLLeftMargin{26. }
+\CSLRightInline{Venook AP, Willett CG. Treatment of locally advanced/metastatic colorectal cancer. \emph{Journal of the National Comprehensive Cancer Network}. 2021;19(5.5):617-621. doi:\href{https://doi.org/10.6004/jnccn.2021.5014}{10.6004/jnccn.2021.5014}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-kato2010}{}}%
+\CSLLeftMargin{27. }
+\CSLRightInline{Kato K, Inaba Y, Tsuji Y, et al. A multicenter phase-{II} study of 5-{FU}, leucovorin and oxaliplatin ({FOLFOX}6) in patients with pretreated metastatic colorectal cancer. \emph{Japanese Journal of Clinical Oncology}. 2010;41(1):63-68. doi:\href{https://doi.org/10.1093/jjco/hyq158}{10.1093/jjco/hyq158}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-karoui2015}{}}%
+\CSLLeftMargin{28. }
+\CSLRightInline{Karoui M, Rullier A, Luciani A, et al. Neoadjuvant {FOLFOX} 4 versus {FOLFOX} 4 with cetuximab versus immediate surgery for high-risk stage {II} and {III} colon cancers: A multicentre randomised controlled phase {II} trial {\textendash} the {PRODIGE} 22 - {ECKINOXE} trial. \emph{{BMC} Cancer}. 2015;15(1). doi:\href{https://doi.org/10.1186/s12885-015-1507-3}{10.1186/s12885-015-1507-3}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-housman2014}{}}%
+\CSLLeftMargin{29. }
+\CSLRightInline{Housman G, Byler S, Heerboth S, et al. Drug resistance in cancer: An overview. \emph{Cancers}. 2014;6(3):1769-1792. doi:\href{https://doi.org/10.3390/cancers6031769}{10.3390/cancers6031769}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-longley2003}{}}%
+\CSLLeftMargin{30. }
+\CSLRightInline{Longley DB, Harkin DP, Johnston PG. 5-fluorouracil: Mechanisms of action and clinical strategies. \emph{Nature Reviews Cancer}. 2003;3(5):330-338. doi:\href{https://doi.org/10.1038/nrc1074}{10.1038/nrc1074}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-arango2004}{}}%
+\CSLLeftMargin{31. }
+\CSLRightInline{Arango D, Wilson AJ, Shi Q, et al. Molecular mechanisms of action and prediction of response to oxaliplatin in colorectal cancer cells. \emph{British Journal of Cancer}. 2004;91(11):1931-1946. doi:\href{https://doi.org/10.1038/sj.bjc.6602215}{10.1038/sj.bjc.6602215}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-tsai2016}{}}%
+\CSLLeftMargin{32. }
+\CSLRightInline{Tsai Y-J, Lin J-K, Chen W-S, et al. Adjuvant {FOLFOX} treatment for stage {III} colon cancer: How many cycles are enough? \emph{{SpringerPlus}}. 2016;5(1). doi:\href{https://doi.org/10.1186/s40064-016-2976-9}{10.1186/s40064-016-2976-9}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-wielahojeska2015}{}}%
+\CSLLeftMargin{33. }
+\CSLRightInline{Wiela-Hojeńska A, Kowalska T, Filipczyk-Cisarż E, Łapiński Łukasz, Nartowski K. Evaluation of the toxicity of anticancer chemotherapy in patients with colon cancer. \emph{Advances in Clinical and Experimental Medicine}. 2015;24(1):103-111. doi:\href{https://doi.org/10.17219/acem/38154}{10.17219/acem/38154}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-skipper1970}{}}%
+\CSLLeftMargin{34. }
+\CSLRightInline{SKIPPER H. Implications of biochemical, cytokinetic, pharmacologic and toxicologic relationships in the design of optimal therapeutic schedules. \emph{Cancer Chemother Rep}. 1970;54:431-450. \url{https://ci.nii.ac.jp/naid/10020626001/en/}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-mukherjee2010}{}}%
+\CSLLeftMargin{35. }
+\CSLRightInline{Mukherjee S. \emph{The Emperor of All Maladies : A Biography of Cancer}. Scribner; 2010.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-benzekry2013}{}}%
+\CSLLeftMargin{36. }
+\CSLRightInline{Benzekry S, Hahnfeldt P. Maximum tolerated dose versus metronomic scheduling in the treatment of metastatic cancers. \emph{Journal of Theoretical Biology}. 2013;335:235-244. doi:\href{https://doi.org/10.1016/j.jtbi.2013.06.036}{10.1016/j.jtbi.2013.06.036}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-porrata2001}{}}%
+\CSLLeftMargin{37. }
+\CSLRightInline{Porrata LF, Adjei AA. The pharmacologic basis of high dose chemotherapy with haematopoietic stem cell support for solid tumours. \emph{British Journal of Cancer}. 2001;85(4):484-489. doi:\href{https://doi.org/10.1054/bjoc.2001.1970}{10.1054/bjoc.2001.1970}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-kareva2015}{}}%
+\CSLLeftMargin{38. }
+\CSLRightInline{Kareva I, Waxman DJ, Klement GL. Metronomic chemotherapy: An attractive alternative to maximum tolerated dose therapy that can activate anti-tumor immunity and minimize therapeutic resistance. \emph{Cancer Letters}. 2015;358(2):100-106. doi:\href{https://doi.org/10.1016/j.canlet.2014.12.039}{10.1016/j.canlet.2014.12.039}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-andre2011}{}}%
+\CSLLeftMargin{39. }
+\CSLRightInline{André N, Abed S, Orbach D, et al. Pilot study of a pediatric metronomic 4-drug regimen. \emph{Oncotarget}. 2011;2(12):960-965. doi:\href{https://doi.org/10.18632/oncotarget.358}{10.18632/oncotarget.358}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-pasquier2011}{}}%
+\CSLLeftMargin{40. }
+\CSLRightInline{Pasquier E, Kieran MW, Sterba J, et al. Moving forward with metronomic chemotherapy: Meeting report of the 2nd international workshop on metronomic and anti-angiogenic chemotherapy in paediatric oncology. \emph{Translational Oncology}. 2011;4(4):203-211. doi:\href{https://doi.org/10.1593/tlo.11124}{10.1593/tlo.11124}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-pasquier2010}{}}%
+\CSLLeftMargin{41. }
+\CSLRightInline{Pasquier E, Kavallaris M, André N. Metronomic chemotherapy: New rationale for new directions. \emph{Nature Reviews Clinical Oncology}. 2010;7(8):455-465. doi:\href{https://doi.org/10.1038/nrclinonc.2010.82}{10.1038/nrclinonc.2010.82}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-browder2000}{}}%
+\CSLLeftMargin{42. }
+\CSLRightInline{Browder T, Butterfield CE, Kräling BM, et al. Antiangiogenic scheduling of chemotherapy improves efficacy against experimental drug-resistant cancer. \emph{Cancer research}. 2000;60(7):1878-1886.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-klement2000}{}}%
+\CSLLeftMargin{43. }
+\CSLRightInline{Klement G, Baruchel S, Rak J, et al. Continuous low-dose therapy with vinblastine and {VEGF} receptor-2 antibody induces sustained tumor regression without overt toxicity. \emph{Journal of Clinical Investigation}. 2000;105(8):R15-R24. doi:\href{https://doi.org/10.1172/jci8829}{10.1172/jci8829}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-maiti2014}{}}%
+\CSLLeftMargin{44. }
+\CSLRightInline{Maiti R. Metronomic chemotherapy. \emph{Journal of Pharmacology and Pharmacotherapeutics}. 2014;5(3):186. doi:\href{https://doi.org/10.4103/0976-500x.136098}{10.4103/0976-500x.136098}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-natale2017}{}}%
+\CSLLeftMargin{45. }
+\CSLRightInline{Natale G, Bocci G. Tumor dormancy, angiogenesis and metronomic chemotherapy. In: \emph{Cancer Drug Discovery and Development}. Springer International Publishing; 2017:31-49. doi:\href{https://doi.org/10.1007/978-3-319-59242-8_3}{10.1007/978-3-319-59242-8\_3}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-kerbel2004}{}}%
+\CSLLeftMargin{46. }
+\CSLRightInline{Kerbel RS, Kamen BA. The anti-angiogenic basis of metronomic chemotherapy. \emph{Nature Reviews Cancer}. 2004;4(6):423-436. doi:\href{https://doi.org/10.1038/nrc1369}{10.1038/nrc1369}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-genfors2016}{}}%
+\CSLLeftMargin{47. }
+\CSLRightInline{Genfors D. Low-dose metronomic capecitabine (xeloda) for treatment of metastatic gastrointestinal cancer: A clinical study. \emph{Archives in Cancer Research}. 2016;4(1). doi:\href{https://doi.org/10.21767/2254-6081.100051}{10.21767/2254-6081.100051}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-stoelting2008}{}}%
+\CSLLeftMargin{48. }
+\CSLRightInline{STOELTING S, TREFZER T, KISRO J, STEINKE A, WAGNER T, PETERS SO. Low-dose oral metronomic chemotherapy prevents mobilization of endothelial progenitor cells into the blood of cancer patients. \emph{In Vivo}. 2008;22(6):831-836. \url{https://iv.iiarjournals.org/content/22/6/831}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-lawler2012}{}}%
+\CSLLeftMargin{49. }
+\CSLRightInline{Lawler PR, Lawler J. Molecular basis for the regulation of angiogenesis by thrombospondin-1 and -2. \emph{Cold Spring Harbor Perspectives in Medicine}. 2012;2(5):a006627-a006627. doi:\href{https://doi.org/10.1101/cshperspect.a006627}{10.1101/cshperspect.a006627}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-bocci2003}{}}%
+\CSLLeftMargin{50. }
+\CSLRightInline{Bocci G, Francia G, Man S, Lawler J, Kerbel RS. Thrombospondin 1, a mediator of the antiangiogenic effects of low-dose metronomic chemotherapy. \emph{Proceedings of the National Academy of Sciences}. 2003;100(22):12917-12922. doi:\href{https://doi.org/10.1073/pnas.2135406100}{10.1073/pnas.2135406100}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-andre2017}{}}%
+\CSLLeftMargin{51. }
+\CSLRightInline{André N, Tsai K, Carré M, Pasquier E. Metronomic chemotherapy: Direct targeting of cancer cells after all? \emph{Trends in Cancer}. 2017;3(5):319-325. doi:\href{https://doi.org/10.1016/j.trecan.2017.03.011}{10.1016/j.trecan.2017.03.011}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-alagizy2015}{}}%
+\CSLLeftMargin{52. }
+\CSLRightInline{Alagizy HA, Shehata MA, Hashem TA, Abdelaziz KK, Swiha MM. Metronomic capecitabine as extended adjuvant chemotherapy in women with triple negative breast cancer. \emph{Hematology/Oncology and Stem Cell Therapy}. 2015;8(1):22-27. doi:\href{https://doi.org/10.1016/j.hemonc.2014.11.003}{10.1016/j.hemonc.2014.11.003}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-he2011}{}}%
+\CSLLeftMargin{53. }
+\CSLRightInline{He S, Shen J, Hong L, Niu L, Niu D. Capecitabine {``}metronomic{''} chemotherapy for palliative treatment of elderly patients with advanced gastric cancer after fluoropyrimidine-based chemotherapy. \emph{Medical Oncology}. 2011;29(1):100-106. doi:\href{https://doi.org/10.1007/s12032-010-9791-x}{10.1007/s12032-010-9791-x}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-huang2017}{}}%
+\CSLLeftMargin{54. }
+\CSLRightInline{Huang W-Y, Ho C-L, Lee C-C, et al. Oral tegafur-uracil as metronomic therapy following intravenous {FOLFOX} for stage {III} colon cancer. St-Pierre Y, ed. \emph{{PLOS} {ONE}}. 2017;12(3):e0174280. doi:\href{https://doi.org/10.1371/journal.pone.0174280}{10.1371/journal.pone.0174280}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-walko2005}{}}%
+\CSLLeftMargin{55. }
+\CSLRightInline{Walko CM, Lindley C. Capecitabine: A review. \emph{Clinical Therapeutics}. 2005;27(1):23-44. doi:\href{https://doi.org/10.1016/j.clinthera.2005.01.005}{10.1016/j.clinthera.2005.01.005}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-reardon2009}{}}%
+\CSLLeftMargin{56. }
+\CSLRightInline{Reardon DA, Desjardins A, Vredenburgh JJ, et al. Metronomic chemotherapy with daily, oral etoposide plus bevacizumab for recurrent malignant glioma: A phase {II} study. \emph{British Journal of Cancer}. 2009;101(12):1986-1994. doi:\href{https://doi.org/10.1038/sj.bjc.6605412}{10.1038/sj.bjc.6605412}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-romiti2013}{}}%
+\CSLLeftMargin{57. }
+\CSLRightInline{Romiti A, Cox MC, Sarcina I, et al. Metronomic chemotherapy for cancer treatment: A decade of clinical studies. \emph{Cancer Chemotherapy and Pharmacology}. 2013;72(1):13-33. doi:\href{https://doi.org/10.1007/s00280-013-2125-x}{10.1007/s00280-013-2125-x}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-masuda2014}{}}%
+\CSLLeftMargin{58. }
+\CSLRightInline{Masuda N, Higaki K, Takano T, et al. A phase {II} study of metronomic paclitaxel/cyclophosphamide/capecitabine followed by 5-fluorouracil/epirubicin/cyclophosphamide as preoperative chemotherapy for triple-negative or low hormone receptor expressing/{HER}2-negative primary breast cancer. \emph{Cancer Chemotherapy and Pharmacology}. 2014;74(2):229-238. doi:\href{https://doi.org/10.1007/s00280-014-2492-y}{10.1007/s00280-014-2492-y}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hildebrand2016}{}}%
+\CSLLeftMargin{59. }
+\CSLRightInline{Hildebrand JR, Raab RE, Muzaffar M, Walker PR. Neoadjuvant metronomic chemotherapy in triple-negative breast cancer ({TNBC}) ({NCT}00542191): Updated results from a phase {II} trial. \emph{Journal of Clinical Oncology}. 2016;34(15{\_}suppl):e12502-e12502. doi:\href{https://doi.org/10.1200/jco.2016.34.15_suppl.e12502}{10.1200/jco.2016.34.15\_suppl.e12502}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-dessai2016}{}}%
+\CSLLeftMargin{60. }
+\CSLRightInline{Dessai SB, Chakraborty S, Babu TVS, et al. Tolerance of weekly metronomic paclitaxel and carboplatin as neoadjuvant chemotherapy in advanced ovarian cancer patients who are unlikely to tolerate 3 weekly paclitaxel and carboplatin. \emph{South Asian Journal of Cancer}. 2016;05(02):063-066. doi:\href{https://doi.org/10.4103/2278-330x.181629}{10.4103/2278-330x.181629}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-stempak2006}{}}%
+\CSLLeftMargin{61. }
+\CSLRightInline{Stempak D, Gammon J, Halton J, Moghrabi A, Koren G, Baruchel S. A pilot pharmacokinetic and antiangiogenic biomarker study of celecoxib and low-dose metronomic vinblastine or cyclophosphamide in pediatric recurrent solid tumors. \emph{Journal of Pediatric Hematology/Oncology}. 2006;28(11):720-728. doi:\href{https://doi.org/10.1097/01.mph.0000243657.64056.c3}{10.1097/01.mph.0000243657.64056.c3}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-kumarage2020}{}}%
+\CSLLeftMargin{62. }
+\CSLRightInline{Kumarage Samantha, Jayamanna Roshan, Mahendra Isanka. {Analysis of Transfusion Support in Dengue Epidemic in Military Setting of Sri Lanka}. \emph{Cancer Research, Statistics, and Treatment}. 2020;3(1):64-68. doi:\href{https://doi.org/10.4103/bbrj.bbrj_114_19}{10.4103/bbrj.bbrj\_114\_19}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-bocci2016}{}}%
+\CSLLeftMargin{63. }
+\CSLRightInline{Bocci G, Kerbel RS. Pharmacokinetics of metronomic chemotherapy: A neglected but crucial aspect. \emph{Nature Reviews Clinical Oncology}. 2016;13(11):659-673. doi:\href{https://doi.org/10.1038/nrclinonc.2016.64}{10.1038/nrclinonc.2016.64}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-yuan2015}{}}%
+\CSLLeftMargin{64. }
+\CSLRightInline{YUAN F, SHI H, JI J, et al. Capecitabine metronomic chemotherapy inhibits the proliferation of gastric cancer cells through anti-angiogenesis. \emph{Oncology Reports}. 2015;33(4):1753-1762. doi:\href{https://doi.org/10.3892/or.2015.3765}{10.3892/or.2015.3765}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-shi2014}{}}%
+\CSLLeftMargin{65. }
+\CSLRightInline{Shi H, Jiang J, Ji J, et al. Anti-angiogenesis participates in antitumor effects of metronomic capecitabine on colon cancer. \emph{Cancer Letters}. 2014;349(2):128-135. doi:\href{https://doi.org/10.1016/j.canlet.2014.04.002}{10.1016/j.canlet.2014.04.002}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-farnsworth2013}{}}%
+\CSLLeftMargin{66. }
+\CSLRightInline{Farnsworth RH, Lackmann M, Achen MG, Stacker SA. Vascular remodeling in cancer. \emph{Oncogene}. 2013;33(27):3496-3505. doi:\href{https://doi.org/10.1038/onc.2013.304}{10.1038/onc.2013.304}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hanahan2011}{}}%
+\CSLLeftMargin{67. }
+\CSLRightInline{Hanahan D, Weinberg RA. Hallmarks of cancer: The next generation. \emph{Cell}. 2011;144(5):646-674. doi:\href{https://doi.org/10.1016/j.cell.2011.02.013}{10.1016/j.cell.2011.02.013}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-muthukkaruppan1982}{}}%
+\CSLLeftMargin{68. }
+\CSLRightInline{Muthukkaruppan VR, Kubai L, Auerbach R. Tumor-induced neovascularization in the mouse eye. \emph{{JNCI}: Journal of the National Cancer Institute}. Published online September 1982. doi:\href{https://doi.org/10.1093/jnci/69.3.699}{10.1093/jnci/69.3.699}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-carmeliet2000}{}}%
+\CSLLeftMargin{69. }
+\CSLRightInline{Carmeliet P, Jain RK. Angiogenesis in cancer and other diseases. \emph{Nature}. 2000;407(6801):249-257. doi:\href{https://doi.org/10.1038/35025220}{10.1038/35025220}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hanahan2000}{}}%
+\CSLLeftMargin{70. }
+\CSLRightInline{Hanahan D, Weinberg RA. The hallmarks of cancer. \emph{Cell}. 2000;100(1):57-70. doi:\href{https://doi.org/10.1016/s0092-8674(00)81683-9}{10.1016/s0092-8674(00)81683-9}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ferrara2004}{}}%
+\CSLLeftMargin{71. }
+\CSLRightInline{Ferrara N, Hillan KJ, Gerber H-P, Novotny W. Discovery and development of bevacizumab, an anti-{VEGF} antibody for treating cancer. \emph{Nature Reviews Drug Discovery}. 2004;3(5):391-400. doi:\href{https://doi.org/10.1038/nrd1381}{10.1038/nrd1381}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-carmeliet2005}{}}%
+\CSLLeftMargin{72. }
+\CSLRightInline{Carmeliet P. {VEGF} as a key mediator of angiogenesis in cancer. \emph{Oncology}. 2005;69(3):4-10. doi:\href{https://doi.org/10.1159/000088478}{10.1159/000088478}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-apte2019}{}}%
+\CSLLeftMargin{73. }
+\CSLRightInline{Apte RS, Chen DS, Ferrara N. {VEGF} in signaling and disease: Beyond discovery and development. \emph{Cell}. 2019;176(6):1248-1264. doi:\href{https://doi.org/10.1016/j.cell.2019.01.021}{10.1016/j.cell.2019.01.021}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-lamalice2007}{}}%
+\CSLLeftMargin{74. }
+\CSLRightInline{Lamalice L, Boeuf FL, Huot J. Endothelial cell migration during angiogenesis. \emph{Circulation Research}. 2007;100(6):782-794. doi:\href{https://doi.org/10.1161/01.res.0000259593.07661.1e}{10.1161/01.res.0000259593.07661.1e}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-eilken2010}{}}%
+\CSLLeftMargin{75. }
+\CSLRightInline{Eilken HM, Adams RH. Dynamics of endothelial cell behavior in sprouting angiogenesis. \emph{Current Opinion in Cell Biology}. 2010;22(5):617-625. doi:\href{https://doi.org/10.1016/j.ceb.2010.08.010}{10.1016/j.ceb.2010.08.010}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-vasudev2014}{}}%
+\CSLLeftMargin{76. }
+\CSLRightInline{Vasudev NS, Reynolds AR. Anti-angiogenic therapy for cancer: Current progress, unresolved questions and future directions. \emph{Angiogenesis}. 2014;17(3):471-494. doi:\href{https://doi.org/10.1007/s10456-014-9420-y}{10.1007/s10456-014-9420-y}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-yaddanapudi2017}{}}%
+\CSLLeftMargin{77. }
+\CSLRightInline{Yaddanapudi K, Mitchell RA. {MIF}-dependent regulation of monocyte/macrophage polarization. In: \emph{{MIF} Family Cytokines in Innate Immunity and Homeostasis}. Springer International Publishing; 2017:59-76. doi:\href{https://doi.org/10.1007/978-3-319-52354-5_4}{10.1007/978-3-319-52354-5\_4}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-simon2017}{}}%
+\CSLLeftMargin{78. }
+\CSLRightInline{Simon T, Gagliano T, Giamas G. Direct effects of anti-angiogenic therapies on tumor cells: {VEGF} signaling. \emph{Trends in Molecular Medicine}. 2017;23(3):282-292. doi:\href{https://doi.org/10.1016/j.molmed.2017.01.002}{10.1016/j.molmed.2017.01.002}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-tirpe2019}{}}%
+\CSLLeftMargin{79. }
+\CSLRightInline{Tirpe AA, Gulei D, Ciortea SM, Crivii C, Berindan-Neagoe I. Hypoxia: Overview on hypoxia-mediated mechanisms with a focus on the role of {HIF} genes. \emph{International Journal of Molecular Sciences}. 2019;20(24):6140. doi:\href{https://doi.org/10.3390/ijms20246140}{10.3390/ijms20246140}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-xie:2021a}{}}%
+\CSLLeftMargin{80. }
+\CSLRightInline{Xie Y. \emph{{formatR}: Format {R} Code Automatically}.; 2021. \url{https://CRAN.R-project.org/package=formatR}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-zhu:2021}{}}%
+\CSLLeftMargin{81. }
+\CSLRightInline{Zhu H. \emph{{kableExtra}: Construct Complex Table with 'Kable' and Pipe Syntax}.; 2021. \url{https://CRAN.R-project.org/package=kableExtra}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-wickham:2019}{}}%
+\CSLLeftMargin{82. }
+\CSLRightInline{Wickham H, Averick M, Bryan J, et al. Welcome to the {tidyverse}. \emph{Journal of Open Source Software}. 2019;4(43):1686. doi:\href{https://doi.org/10.21105/joss.01686}{10.21105/joss.01686}}
+
+\end{CSLReferences}
+
+\hypertarget{litreview}{%
+\chapter{Review of the Literature}\label{litreview}}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel eros sed mauris porttitor semper nec a orci. Nullam vestibulum mi nec condimentum posuere. Pellentesque eget diam id sapien aliquet ullamcorper. Pellentesque blandit nec lectus ut mollis. Praesent in facilisis justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed eget congue leo, sed consequat libero. In rutrum malesuada nisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi sollicitudin tortor ut sem facilisis mollis.
+
+\hypertarget{methods}{%
+\chapter{Methods}\label{methods}}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel eros sed mauris porttitor semper nec a orci. Nullam vestibulum mi nec condimentum posuere. Pellentesque eget diam id sapien aliquet ullamcorper. Pellentesque blandit nec lectus ut mollis. Praesent in facilisis justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed eget congue leo, sed consequat libero. In rutrum malesuada nisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi sollicitudin tortor ut sem facilisis mollis.
+
+\hypertarget{results}{%
+\chapter{Results}\label{results}}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel eros sed mauris porttitor semper nec a orci. Nullam vestibulum mi nec condimentum posuere. Pellentesque eget diam id sapien aliquet ullamcorper. Pellentesque blandit nec lectus ut mollis. Praesent in facilisis justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed eget congue leo, sed consequat libero. In rutrum malesuada nisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi sollicitudin tortor ut sem facilisis mollis.
+\textbf{More info}
+
+\hypertarget{discussion}{%
+\chapter{Discussion}\label{discussion}}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel eros sed mauris porttitor semper nec a orci. Nullam vestibulum mi nec condimentum posuere. Pellentesque eget diam id sapien aliquet ullamcorper. Pellentesque blandit nec lectus ut mollis. Praesent in facilisis justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed eget congue leo, sed consequat libero. In rutrum malesuada nisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi sollicitudin tortor ut sem facilisis mollis.
+
+\hypertarget{references-1}{%
+\chapter*{References}\label{references-1}}
+\addcontentsline{toc}{chapter}{References}
+
+\noindent
+
+\setlength{\parindent}{-0.20in}
+\setlength{\leftskip}{0.20in}
+\setlength{\parskip}{8pt}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-moeslein2001}{}}%
+\CSLLeftMargin{1. }
+\CSLRightInline{Moeslein G. Colon cancer. \emph{Encyclopedic Reference of Cancer}. Published online 2001:213-219. \url{http://search.ebscohost.com/login.aspx?direct=true\&AuthType=ip,sso\&db=a9h\&AN=23677758\&site=ehost-live\&scope=site\&custid=s8428489}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-siegel2020}{}}%
+\CSLLeftMargin{2. }
+\CSLRightInline{Siegel RL, Miller KD, Jemal A. Cancer statistics, 2020. \emph{{CA}: A Cancer Journal for Clinicians}. 2020;70(1):7-30. doi:\href{https://doi.org/10.3322/caac.21590}{10.3322/caac.21590}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-jansman2007}{}}%
+\CSLLeftMargin{3. }
+\CSLRightInline{Jansman FGA, Postma MJ, Brouwers JRBJ. Cost considerations in the treatment of colorectal cancer. \emph{{PharmacoEconomics}}. 2007;25(7):537-562. doi:\href{https://doi.org/10.2165/00019053-200725070-00002}{10.2165/00019053-200725070-00002}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-benson2020}{}}%
+\CSLLeftMargin{4. }
+\CSLRightInline{Benson AB, Venook AP, Al-Hawary MM, et al. {NCCN} guidelines insights: Rectal cancer, version 6.2020. \emph{Journal of the National Comprehensive Cancer Network}. 2020;18(7):806-815. doi:\href{https://doi.org/10.6004/jnccn.2020.0032}{10.6004/jnccn.2020.0032}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-mccormick2002}{}}%
+\CSLLeftMargin{5. }
+\CSLRightInline{McCormick D, Kibbe PJ, Morgan SW. Colon cancer: Prevention, diagnosis, treatment:{CE} test. \emph{Gastroenterology Nursing}. 2002;25(5):211-212. doi:\href{https://doi.org/10.1097/00001610-200209000-00007}{10.1097/00001610-200209000-00007}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-siegel2017}{}}%
+\CSLLeftMargin{6. }
+\CSLRightInline{Siegel RL, Fedewa SA, Anderson WF, et al. Colorectal cancer incidence patterns in the united states, 1974{\textendash}2013. \emph{{JNCI}: Journal of the National Cancer Institute}. 2017;109(8). doi:\href{https://doi.org/10.1093/jnci/djw322}{10.1093/jnci/djw322}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-lieberman2014}{}}%
+\CSLLeftMargin{7. }
+\CSLRightInline{Lieberman DA, Williams JL, Holub JL, et al. Colonoscopy utilization and outcomes 2000 to 2011. \emph{Gastrointestinal Endoscopy}. 2014;80(1):133-143.e3. doi:\href{https://doi.org/10.1016/j.gie.2014.01.014}{10.1016/j.gie.2014.01.014}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-saltzman2015}{}}%
+\CSLLeftMargin{8. }
+\CSLRightInline{Saltzman JR, Cash BD, Pasha SF, et al. Bowel preparation before colonoscopy. \emph{Gastrointestinal Endoscopy}. 2015;81(4):781-794. doi:\href{https://doi.org/10.1016/j.gie.2014.09.048}{10.1016/j.gie.2014.09.048}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-lin2017}{}}%
+\CSLLeftMargin{9. }
+\CSLRightInline{Lin OS. Sedation for routine gastrointestinal endoscopic procedures: A review on efficacy, safety, efficiency, cost and satisfaction. \emph{Intestinal Research}. 2017;15(4):456. doi:\href{https://doi.org/10.5217/ir.2017.15.4.456}{10.5217/ir.2017.15.4.456}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-shehadeh2020}{}}%
+\CSLLeftMargin{10. }
+\CSLRightInline{Shehadeh KS, Cohn AEM, Jiang R. A distributionally robust optimization approach for outpatient colonoscopy scheduling. \emph{European Journal of Operational Research}. 2020;283(2):549-561. doi:\href{https://doi.org/10.1016/j.ejor.2019.11.039}{10.1016/j.ejor.2019.11.039}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-duloy2018}{}}%
+\CSLLeftMargin{11. }
+\CSLRightInline{Duloy AM, Kaltenbach TR, Keswani RN. Assessing colon polypectomy competency and its association with established quality metrics. \emph{Gastrointestinal Endoscopy}. 2018;87(3):635-644. doi:\href{https://doi.org/10.1016/j.gie.2017.08.032}{10.1016/j.gie.2017.08.032}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-widerska2014}{}}%
+\CSLLeftMargin{12. }
+\CSLRightInline{Świderska M, Choromańska B, Dąbrowska E, et al. Review the diagnostics of colorectal cancer. \emph{Wsp{ó}{ł}czesna Onkologia}. 2014;1:1-6. doi:\href{https://doi.org/10.5114/wo.2013.39995}{10.5114/wo.2013.39995}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-brown2019}{}}%
+\CSLLeftMargin{13. }
+\CSLRightInline{Brown SR, Hicks TC, Whitlow CB. Diagnostic and therapeutic colonoscopy. In: \emph{Shackelford{\textquotesingle}s Surgery of the Alimentary Tract, 2 Volume Set}. Elsevier; 2019:1689-1699. doi:\href{https://doi.org/10.1016/b978-0-323-40232-3.00145-x}{10.1016/b978-0-323-40232-3.00145-x}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-boo2015}{}}%
+\CSLLeftMargin{14. }
+\CSLRightInline{Boo S-J, Jung JH, Park JH, et al. An adequate level of training for technically competent colonoscopic polypectomy. \emph{Scandinavian Journal of Gastroenterology}. 2015;50(7):908-915. doi:\href{https://doi.org/10.3109/00365521.2015.1006672}{10.3109/00365521.2015.1006672}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-leufkens2012}{}}%
+\CSLLeftMargin{15. }
+\CSLRightInline{Leufkens A, Oijen M van, Vleggaar F, Siersema P. Factors influencing the miss rate of polyps in a back-to-back colonoscopy study. \emph{Endoscopy}. 2012;44(05):470-475. doi:\href{https://doi.org/10.1055/s-0031-1291666}{10.1055/s-0031-1291666}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-vanrijn2006}{}}%
+\CSLLeftMargin{16. }
+\CSLRightInline{Rijn JC van, Reitsma JB, Stoker J, Bossuyt PM, Deventer SJ van, Dekker E. Polyp miss rate determined by tandem colonoscopy: A systematic review. \emph{The American Journal of Gastroenterology}. 2006;101(2):343-350. doi:\href{https://doi.org/10.1111/j.1572-0241.2006.00390.x}{10.1111/j.1572-0241.2006.00390.x}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-tajbakhsh2016}{}}%
+\CSLLeftMargin{17. }
+\CSLRightInline{Tajbakhsh N, Gurudu SR, Liang J. Automated polyp detection in colonoscopy videos using shape and context information. \emph{{IEEE} Transactions on Medical Imaging}. 2016;35(2):630-644. doi:\href{https://doi.org/10.1109/tmi.2015.2487997}{10.1109/tmi.2015.2487997}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-bernal2017}{}}%
+\CSLLeftMargin{18. }
+\CSLRightInline{Bernal J, Tajkbaksh N, Sanchez FJ, et al. Comparative validation of polyp detection methods in video colonoscopy: Results from the {MICCAI} 2015 endoscopic vision challenge. \emph{{IEEE} Transactions on Medical Imaging}. 2017;36(6):1231-1249. doi:\href{https://doi.org/10.1109/tmi.2017.2664042}{10.1109/tmi.2017.2664042}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-pacal2020}{}}%
+\CSLLeftMargin{19. }
+\CSLRightInline{Pacal I, Karaboga D, Basturk A, Akay B, Nalbantoglu U. A comprehensive review of deep learning in colon cancer. \emph{Computers in Biology and Medicine}. 2020;126:104003. doi:\href{https://doi.org/10.1016/j.compbiomed.2020.104003}{10.1016/j.compbiomed.2020.104003}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ajcc2017}{}}%
+\CSLLeftMargin{20. }
+\CSLRightInline{\emph{AJCC Cancer Staging Manual}. Eight edition / editor-in-chief, Mahul B. Amin, MD, FCAP ; editors, Stephen B. Edge, MD, FACS {[}and 16 others{]} ; Donna M. Gress, RHIT, CTR-Technical editor ; Laura R. Meyer, CAPM-Managing editor. American Joint Committee on Cancer, Springer; 2017.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-greene2002}{}}%
+\CSLLeftMargin{21. }
+\CSLRightInline{Greene FL, Stewart AK, Norton HJ. A new {TNM} staging strategy for node-positive (stage {III}) colon cancer. \emph{Annals of Surgery}. 2002;236(4):416-421. doi:\href{https://doi.org/10.1097/00000658-200210000-00003}{10.1097/00000658-200210000-00003}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-benson2011}{}}%
+\CSLLeftMargin{22. }
+\CSLRightInline{Benson AB, Arnoletti JP, Bekaii-Saab T, et al. Colon cancer. \emph{Journal of the National Comprehensive Cancer Network}. 2011;9(11):1238-1290. doi:\href{https://doi.org/10.6004/jnccn.2011.0104}{10.6004/jnccn.2011.0104}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-benson2018}{}}%
+\CSLLeftMargin{23. }
+\CSLRightInline{Benson AB, Venook AP, Al-Hawary MM, et al. {NCCN} guidelines insights: Colon cancer, version 2.2018. \emph{Journal of the National Comprehensive Cancer Network}. 2018;16(4):359-369. doi:\href{https://doi.org/10.6004/jnccn.2018.0021}{10.6004/jnccn.2018.0021}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-seymour2019}{}}%
+\CSLLeftMargin{24. }
+\CSLRightInline{Seymour MT, and DM. {FOxTROT}: An international randomised controlled trial in 1052 patients (pts) evaluating neoadjuvant chemotherapy ({NAC}) for colon cancer. \emph{Journal of Clinical Oncology}. 2019;37(15{\_}suppl):3504-3504. doi:\href{https://doi.org/10.1200/jco.2019.37.15_suppl.3504}{10.1200/jco.2019.37.15\_suppl.3504}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-roth2020}{}}%
+\CSLLeftMargin{25. }
+\CSLRightInline{Roth M, Eng C. Neoadjuvant chemotherapy for colon cancer. \emph{Cancers}. 2020;12(9):2368. doi:\href{https://doi.org/10.3390/cancers12092368}{10.3390/cancers12092368}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-venook2021}{}}%
+\CSLLeftMargin{26. }
+\CSLRightInline{Venook AP, Willett CG. Treatment of locally advanced/metastatic colorectal cancer. \emph{Journal of the National Comprehensive Cancer Network}. 2021;19(5.5):617-621. doi:\href{https://doi.org/10.6004/jnccn.2021.5014}{10.6004/jnccn.2021.5014}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-kato2010}{}}%
+\CSLLeftMargin{27. }
+\CSLRightInline{Kato K, Inaba Y, Tsuji Y, et al. A multicenter phase-{II} study of 5-{FU}, leucovorin and oxaliplatin ({FOLFOX}6) in patients with pretreated metastatic colorectal cancer. \emph{Japanese Journal of Clinical Oncology}. 2010;41(1):63-68. doi:\href{https://doi.org/10.1093/jjco/hyq158}{10.1093/jjco/hyq158}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-karoui2015}{}}%
+\CSLLeftMargin{28. }
+\CSLRightInline{Karoui M, Rullier A, Luciani A, et al. Neoadjuvant {FOLFOX} 4 versus {FOLFOX} 4 with cetuximab versus immediate surgery for high-risk stage {II} and {III} colon cancers: A multicentre randomised controlled phase {II} trial {\textendash} the {PRODIGE} 22 - {ECKINOXE} trial. \emph{{BMC} Cancer}. 2015;15(1). doi:\href{https://doi.org/10.1186/s12885-015-1507-3}{10.1186/s12885-015-1507-3}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-housman2014}{}}%
+\CSLLeftMargin{29. }
+\CSLRightInline{Housman G, Byler S, Heerboth S, et al. Drug resistance in cancer: An overview. \emph{Cancers}. 2014;6(3):1769-1792. doi:\href{https://doi.org/10.3390/cancers6031769}{10.3390/cancers6031769}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-longley2003}{}}%
+\CSLLeftMargin{30. }
+\CSLRightInline{Longley DB, Harkin DP, Johnston PG. 5-fluorouracil: Mechanisms of action and clinical strategies. \emph{Nature Reviews Cancer}. 2003;3(5):330-338. doi:\href{https://doi.org/10.1038/nrc1074}{10.1038/nrc1074}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-arango2004}{}}%
+\CSLLeftMargin{31. }
+\CSLRightInline{Arango D, Wilson AJ, Shi Q, et al. Molecular mechanisms of action and prediction of response to oxaliplatin in colorectal cancer cells. \emph{British Journal of Cancer}. 2004;91(11):1931-1946. doi:\href{https://doi.org/10.1038/sj.bjc.6602215}{10.1038/sj.bjc.6602215}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-tsai2016}{}}%
+\CSLLeftMargin{32. }
+\CSLRightInline{Tsai Y-J, Lin J-K, Chen W-S, et al. Adjuvant {FOLFOX} treatment for stage {III} colon cancer: How many cycles are enough? \emph{{SpringerPlus}}. 2016;5(1). doi:\href{https://doi.org/10.1186/s40064-016-2976-9}{10.1186/s40064-016-2976-9}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-wielahojeska2015}{}}%
+\CSLLeftMargin{33. }
+\CSLRightInline{Wiela-Hojeńska A, Kowalska T, Filipczyk-Cisarż E, Łapiński Łukasz, Nartowski K. Evaluation of the toxicity of anticancer chemotherapy in patients with colon cancer. \emph{Advances in Clinical and Experimental Medicine}. 2015;24(1):103-111. doi:\href{https://doi.org/10.17219/acem/38154}{10.17219/acem/38154}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-skipper1970}{}}%
+\CSLLeftMargin{34. }
+\CSLRightInline{SKIPPER H. Implications of biochemical, cytokinetic, pharmacologic and toxicologic relationships in the design of optimal therapeutic schedules. \emph{Cancer Chemother Rep}. 1970;54:431-450. \url{https://ci.nii.ac.jp/naid/10020626001/en/}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-mukherjee2010}{}}%
+\CSLLeftMargin{35. }
+\CSLRightInline{Mukherjee S. \emph{The Emperor of All Maladies : A Biography of Cancer}. Scribner; 2010.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-benzekry2013}{}}%
+\CSLLeftMargin{36. }
+\CSLRightInline{Benzekry S, Hahnfeldt P. Maximum tolerated dose versus metronomic scheduling in the treatment of metastatic cancers. \emph{Journal of Theoretical Biology}. 2013;335:235-244. doi:\href{https://doi.org/10.1016/j.jtbi.2013.06.036}{10.1016/j.jtbi.2013.06.036}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-porrata2001}{}}%
+\CSLLeftMargin{37. }
+\CSLRightInline{Porrata LF, Adjei AA. The pharmacologic basis of high dose chemotherapy with haematopoietic stem cell support for solid tumours. \emph{British Journal of Cancer}. 2001;85(4):484-489. doi:\href{https://doi.org/10.1054/bjoc.2001.1970}{10.1054/bjoc.2001.1970}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-kareva2015}{}}%
+\CSLLeftMargin{38. }
+\CSLRightInline{Kareva I, Waxman DJ, Klement GL. Metronomic chemotherapy: An attractive alternative to maximum tolerated dose therapy that can activate anti-tumor immunity and minimize therapeutic resistance. \emph{Cancer Letters}. 2015;358(2):100-106. doi:\href{https://doi.org/10.1016/j.canlet.2014.12.039}{10.1016/j.canlet.2014.12.039}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-andre2011}{}}%
+\CSLLeftMargin{39. }
+\CSLRightInline{André N, Abed S, Orbach D, et al. Pilot study of a pediatric metronomic 4-drug regimen. \emph{Oncotarget}. 2011;2(12):960-965. doi:\href{https://doi.org/10.18632/oncotarget.358}{10.18632/oncotarget.358}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-pasquier2011}{}}%
+\CSLLeftMargin{40. }
+\CSLRightInline{Pasquier E, Kieran MW, Sterba J, et al. Moving forward with metronomic chemotherapy: Meeting report of the 2nd international workshop on metronomic and anti-angiogenic chemotherapy in paediatric oncology. \emph{Translational Oncology}. 2011;4(4):203-211. doi:\href{https://doi.org/10.1593/tlo.11124}{10.1593/tlo.11124}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-pasquier2010}{}}%
+\CSLLeftMargin{41. }
+\CSLRightInline{Pasquier E, Kavallaris M, André N. Metronomic chemotherapy: New rationale for new directions. \emph{Nature Reviews Clinical Oncology}. 2010;7(8):455-465. doi:\href{https://doi.org/10.1038/nrclinonc.2010.82}{10.1038/nrclinonc.2010.82}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-browder2000}{}}%
+\CSLLeftMargin{42. }
+\CSLRightInline{Browder T, Butterfield CE, Kräling BM, et al. Antiangiogenic scheduling of chemotherapy improves efficacy against experimental drug-resistant cancer. \emph{Cancer research}. 2000;60(7):1878-1886.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-klement2000}{}}%
+\CSLLeftMargin{43. }
+\CSLRightInline{Klement G, Baruchel S, Rak J, et al. Continuous low-dose therapy with vinblastine and {VEGF} receptor-2 antibody induces sustained tumor regression without overt toxicity. \emph{Journal of Clinical Investigation}. 2000;105(8):R15-R24. doi:\href{https://doi.org/10.1172/jci8829}{10.1172/jci8829}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-maiti2014}{}}%
+\CSLLeftMargin{44. }
+\CSLRightInline{Maiti R. Metronomic chemotherapy. \emph{Journal of Pharmacology and Pharmacotherapeutics}. 2014;5(3):186. doi:\href{https://doi.org/10.4103/0976-500x.136098}{10.4103/0976-500x.136098}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-natale2017}{}}%
+\CSLLeftMargin{45. }
+\CSLRightInline{Natale G, Bocci G. Tumor dormancy, angiogenesis and metronomic chemotherapy. In: \emph{Cancer Drug Discovery and Development}. Springer International Publishing; 2017:31-49. doi:\href{https://doi.org/10.1007/978-3-319-59242-8_3}{10.1007/978-3-319-59242-8\_3}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-kerbel2004}{}}%
+\CSLLeftMargin{46. }
+\CSLRightInline{Kerbel RS, Kamen BA. The anti-angiogenic basis of metronomic chemotherapy. \emph{Nature Reviews Cancer}. 2004;4(6):423-436. doi:\href{https://doi.org/10.1038/nrc1369}{10.1038/nrc1369}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-genfors2016}{}}%
+\CSLLeftMargin{47. }
+\CSLRightInline{Genfors D. Low-dose metronomic capecitabine (xeloda) for treatment of metastatic gastrointestinal cancer: A clinical study. \emph{Archives in Cancer Research}. 2016;4(1). doi:\href{https://doi.org/10.21767/2254-6081.100051}{10.21767/2254-6081.100051}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-stoelting2008}{}}%
+\CSLLeftMargin{48. }
+\CSLRightInline{STOELTING S, TREFZER T, KISRO J, STEINKE A, WAGNER T, PETERS SO. Low-dose oral metronomic chemotherapy prevents mobilization of endothelial progenitor cells into the blood of cancer patients. \emph{In Vivo}. 2008;22(6):831-836. \url{https://iv.iiarjournals.org/content/22/6/831}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-lawler2012}{}}%
+\CSLLeftMargin{49. }
+\CSLRightInline{Lawler PR, Lawler J. Molecular basis for the regulation of angiogenesis by thrombospondin-1 and -2. \emph{Cold Spring Harbor Perspectives in Medicine}. 2012;2(5):a006627-a006627. doi:\href{https://doi.org/10.1101/cshperspect.a006627}{10.1101/cshperspect.a006627}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-bocci2003}{}}%
+\CSLLeftMargin{50. }
+\CSLRightInline{Bocci G, Francia G, Man S, Lawler J, Kerbel RS. Thrombospondin 1, a mediator of the antiangiogenic effects of low-dose metronomic chemotherapy. \emph{Proceedings of the National Academy of Sciences}. 2003;100(22):12917-12922. doi:\href{https://doi.org/10.1073/pnas.2135406100}{10.1073/pnas.2135406100}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-andre2017}{}}%
+\CSLLeftMargin{51. }
+\CSLRightInline{André N, Tsai K, Carré M, Pasquier E. Metronomic chemotherapy: Direct targeting of cancer cells after all? \emph{Trends in Cancer}. 2017;3(5):319-325. doi:\href{https://doi.org/10.1016/j.trecan.2017.03.011}{10.1016/j.trecan.2017.03.011}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-alagizy2015}{}}%
+\CSLLeftMargin{52. }
+\CSLRightInline{Alagizy HA, Shehata MA, Hashem TA, Abdelaziz KK, Swiha MM. Metronomic capecitabine as extended adjuvant chemotherapy in women with triple negative breast cancer. \emph{Hematology/Oncology and Stem Cell Therapy}. 2015;8(1):22-27. doi:\href{https://doi.org/10.1016/j.hemonc.2014.11.003}{10.1016/j.hemonc.2014.11.003}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-he2011}{}}%
+\CSLLeftMargin{53. }
+\CSLRightInline{He S, Shen J, Hong L, Niu L, Niu D. Capecitabine {``}metronomic{''} chemotherapy for palliative treatment of elderly patients with advanced gastric cancer after fluoropyrimidine-based chemotherapy. \emph{Medical Oncology}. 2011;29(1):100-106. doi:\href{https://doi.org/10.1007/s12032-010-9791-x}{10.1007/s12032-010-9791-x}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-huang2017}{}}%
+\CSLLeftMargin{54. }
+\CSLRightInline{Huang W-Y, Ho C-L, Lee C-C, et al. Oral tegafur-uracil as metronomic therapy following intravenous {FOLFOX} for stage {III} colon cancer. St-Pierre Y, ed. \emph{{PLOS} {ONE}}. 2017;12(3):e0174280. doi:\href{https://doi.org/10.1371/journal.pone.0174280}{10.1371/journal.pone.0174280}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-walko2005}{}}%
+\CSLLeftMargin{55. }
+\CSLRightInline{Walko CM, Lindley C. Capecitabine: A review. \emph{Clinical Therapeutics}. 2005;27(1):23-44. doi:\href{https://doi.org/10.1016/j.clinthera.2005.01.005}{10.1016/j.clinthera.2005.01.005}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-reardon2009}{}}%
+\CSLLeftMargin{56. }
+\CSLRightInline{Reardon DA, Desjardins A, Vredenburgh JJ, et al. Metronomic chemotherapy with daily, oral etoposide plus bevacizumab for recurrent malignant glioma: A phase {II} study. \emph{British Journal of Cancer}. 2009;101(12):1986-1994. doi:\href{https://doi.org/10.1038/sj.bjc.6605412}{10.1038/sj.bjc.6605412}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-romiti2013}{}}%
+\CSLLeftMargin{57. }
+\CSLRightInline{Romiti A, Cox MC, Sarcina I, et al. Metronomic chemotherapy for cancer treatment: A decade of clinical studies. \emph{Cancer Chemotherapy and Pharmacology}. 2013;72(1):13-33. doi:\href{https://doi.org/10.1007/s00280-013-2125-x}{10.1007/s00280-013-2125-x}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-masuda2014}{}}%
+\CSLLeftMargin{58. }
+\CSLRightInline{Masuda N, Higaki K, Takano T, et al. A phase {II} study of metronomic paclitaxel/cyclophosphamide/capecitabine followed by 5-fluorouracil/epirubicin/cyclophosphamide as preoperative chemotherapy for triple-negative or low hormone receptor expressing/{HER}2-negative primary breast cancer. \emph{Cancer Chemotherapy and Pharmacology}. 2014;74(2):229-238. doi:\href{https://doi.org/10.1007/s00280-014-2492-y}{10.1007/s00280-014-2492-y}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hildebrand2016}{}}%
+\CSLLeftMargin{59. }
+\CSLRightInline{Hildebrand JR, Raab RE, Muzaffar M, Walker PR. Neoadjuvant metronomic chemotherapy in triple-negative breast cancer ({TNBC}) ({NCT}00542191): Updated results from a phase {II} trial. \emph{Journal of Clinical Oncology}. 2016;34(15{\_}suppl):e12502-e12502. doi:\href{https://doi.org/10.1200/jco.2016.34.15_suppl.e12502}{10.1200/jco.2016.34.15\_suppl.e12502}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-dessai2016}{}}%
+\CSLLeftMargin{60. }
+\CSLRightInline{Dessai SB, Chakraborty S, Babu TVS, et al. Tolerance of weekly metronomic paclitaxel and carboplatin as neoadjuvant chemotherapy in advanced ovarian cancer patients who are unlikely to tolerate 3 weekly paclitaxel and carboplatin. \emph{South Asian Journal of Cancer}. 2016;05(02):063-066. doi:\href{https://doi.org/10.4103/2278-330x.181629}{10.4103/2278-330x.181629}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-stempak2006}{}}%
+\CSLLeftMargin{61. }
+\CSLRightInline{Stempak D, Gammon J, Halton J, Moghrabi A, Koren G, Baruchel S. A pilot pharmacokinetic and antiangiogenic biomarker study of celecoxib and low-dose metronomic vinblastine or cyclophosphamide in pediatric recurrent solid tumors. \emph{Journal of Pediatric Hematology/Oncology}. 2006;28(11):720-728. doi:\href{https://doi.org/10.1097/01.mph.0000243657.64056.c3}{10.1097/01.mph.0000243657.64056.c3}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-kumarage2020}{}}%
+\CSLLeftMargin{62. }
+\CSLRightInline{Kumarage Samantha, Jayamanna Roshan, Mahendra Isanka. {Analysis of Transfusion Support in Dengue Epidemic in Military Setting of Sri Lanka}. \emph{Cancer Research, Statistics, and Treatment}. 2020;3(1):64-68. doi:\href{https://doi.org/10.4103/bbrj.bbrj_114_19}{10.4103/bbrj.bbrj\_114\_19}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-bocci2016}{}}%
+\CSLLeftMargin{63. }
+\CSLRightInline{Bocci G, Kerbel RS. Pharmacokinetics of metronomic chemotherapy: A neglected but crucial aspect. \emph{Nature Reviews Clinical Oncology}. 2016;13(11):659-673. doi:\href{https://doi.org/10.1038/nrclinonc.2016.64}{10.1038/nrclinonc.2016.64}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-yuan2015}{}}%
+\CSLLeftMargin{64. }
+\CSLRightInline{YUAN F, SHI H, JI J, et al. Capecitabine metronomic chemotherapy inhibits the proliferation of gastric cancer cells through anti-angiogenesis. \emph{Oncology Reports}. 2015;33(4):1753-1762. doi:\href{https://doi.org/10.3892/or.2015.3765}{10.3892/or.2015.3765}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-shi2014}{}}%
+\CSLLeftMargin{65. }
+\CSLRightInline{Shi H, Jiang J, Ji J, et al. Anti-angiogenesis participates in antitumor effects of metronomic capecitabine on colon cancer. \emph{Cancer Letters}. 2014;349(2):128-135. doi:\href{https://doi.org/10.1016/j.canlet.2014.04.002}{10.1016/j.canlet.2014.04.002}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-farnsworth2013}{}}%
+\CSLLeftMargin{66. }
+\CSLRightInline{Farnsworth RH, Lackmann M, Achen MG, Stacker SA. Vascular remodeling in cancer. \emph{Oncogene}. 2013;33(27):3496-3505. doi:\href{https://doi.org/10.1038/onc.2013.304}{10.1038/onc.2013.304}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hanahan2011}{}}%
+\CSLLeftMargin{67. }
+\CSLRightInline{Hanahan D, Weinberg RA. Hallmarks of cancer: The next generation. \emph{Cell}. 2011;144(5):646-674. doi:\href{https://doi.org/10.1016/j.cell.2011.02.013}{10.1016/j.cell.2011.02.013}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-muthukkaruppan1982}{}}%
+\CSLLeftMargin{68. }
+\CSLRightInline{Muthukkaruppan VR, Kubai L, Auerbach R. Tumor-induced neovascularization in the mouse eye. \emph{{JNCI}: Journal of the National Cancer Institute}. Published online September 1982. doi:\href{https://doi.org/10.1093/jnci/69.3.699}{10.1093/jnci/69.3.699}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-carmeliet2000}{}}%
+\CSLLeftMargin{69. }
+\CSLRightInline{Carmeliet P, Jain RK. Angiogenesis in cancer and other diseases. \emph{Nature}. 2000;407(6801):249-257. doi:\href{https://doi.org/10.1038/35025220}{10.1038/35025220}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hanahan2000}{}}%
+\CSLLeftMargin{70. }
+\CSLRightInline{Hanahan D, Weinberg RA. The hallmarks of cancer. \emph{Cell}. 2000;100(1):57-70. doi:\href{https://doi.org/10.1016/s0092-8674(00)81683-9}{10.1016/s0092-8674(00)81683-9}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ferrara2004}{}}%
+\CSLLeftMargin{71. }
+\CSLRightInline{Ferrara N, Hillan KJ, Gerber H-P, Novotny W. Discovery and development of bevacizumab, an anti-{VEGF} antibody for treating cancer. \emph{Nature Reviews Drug Discovery}. 2004;3(5):391-400. doi:\href{https://doi.org/10.1038/nrd1381}{10.1038/nrd1381}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-carmeliet2005}{}}%
+\CSLLeftMargin{72. }
+\CSLRightInline{Carmeliet P. {VEGF} as a key mediator of angiogenesis in cancer. \emph{Oncology}. 2005;69(3):4-10. doi:\href{https://doi.org/10.1159/000088478}{10.1159/000088478}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-apte2019}{}}%
+\CSLLeftMargin{73. }
+\CSLRightInline{Apte RS, Chen DS, Ferrara N. {VEGF} in signaling and disease: Beyond discovery and development. \emph{Cell}. 2019;176(6):1248-1264. doi:\href{https://doi.org/10.1016/j.cell.2019.01.021}{10.1016/j.cell.2019.01.021}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-lamalice2007}{}}%
+\CSLLeftMargin{74. }
+\CSLRightInline{Lamalice L, Boeuf FL, Huot J. Endothelial cell migration during angiogenesis. \emph{Circulation Research}. 2007;100(6):782-794. doi:\href{https://doi.org/10.1161/01.res.0000259593.07661.1e}{10.1161/01.res.0000259593.07661.1e}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-eilken2010}{}}%
+\CSLLeftMargin{75. }
+\CSLRightInline{Eilken HM, Adams RH. Dynamics of endothelial cell behavior in sprouting angiogenesis. \emph{Current Opinion in Cell Biology}. 2010;22(5):617-625. doi:\href{https://doi.org/10.1016/j.ceb.2010.08.010}{10.1016/j.ceb.2010.08.010}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-vasudev2014}{}}%
+\CSLLeftMargin{76. }
+\CSLRightInline{Vasudev NS, Reynolds AR. Anti-angiogenic therapy for cancer: Current progress, unresolved questions and future directions. \emph{Angiogenesis}. 2014;17(3):471-494. doi:\href{https://doi.org/10.1007/s10456-014-9420-y}{10.1007/s10456-014-9420-y}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-yaddanapudi2017}{}}%
+\CSLLeftMargin{77. }
+\CSLRightInline{Yaddanapudi K, Mitchell RA. {MIF}-dependent regulation of monocyte/macrophage polarization. In: \emph{{MIF} Family Cytokines in Innate Immunity and Homeostasis}. Springer International Publishing; 2017:59-76. doi:\href{https://doi.org/10.1007/978-3-319-52354-5_4}{10.1007/978-3-319-52354-5\_4}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-simon2017}{}}%
+\CSLLeftMargin{78. }
+\CSLRightInline{Simon T, Gagliano T, Giamas G. Direct effects of anti-angiogenic therapies on tumor cells: {VEGF} signaling. \emph{Trends in Molecular Medicine}. 2017;23(3):282-292. doi:\href{https://doi.org/10.1016/j.molmed.2017.01.002}{10.1016/j.molmed.2017.01.002}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-tirpe2019}{}}%
+\CSLLeftMargin{79. }
+\CSLRightInline{Tirpe AA, Gulei D, Ciortea SM, Crivii C, Berindan-Neagoe I. Hypoxia: Overview on hypoxia-mediated mechanisms with a focus on the role of {HIF} genes. \emph{International Journal of Molecular Sciences}. 2019;20(24):6140. doi:\href{https://doi.org/10.3390/ijms20246140}{10.3390/ijms20246140}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-xie:2021a}{}}%
+\CSLLeftMargin{80. }
+\CSLRightInline{Xie Y. \emph{{formatR}: Format {R} Code Automatically}.; 2021. \url{https://CRAN.R-project.org/package=formatR}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-zhu:2021}{}}%
+\CSLLeftMargin{81. }
+\CSLRightInline{Zhu H. \emph{{kableExtra}: Construct Complex Table with 'Kable' and Pipe Syntax}.; 2021. \url{https://CRAN.R-project.org/package=kableExtra}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-wickham:2019}{}}%
+\CSLLeftMargin{82. }
+\CSLRightInline{Wickham H, Averick M, Bryan J, et al. Welcome to the {tidyverse}. \emph{Journal of Open Source Software}. 2019;4(43):1686. doi:\href{https://doi.org/10.21105/joss.01686}{10.21105/joss.01686}}
+
+\end{CSLReferences}
+
+\setlength{\parindent}{0.20in}
+\setlength{\leftskip}{0pt}
+
+\hypertarget{appendix-appendix}{%
+\appendix}
+
+
+\hypertarget{appendix-a}{%
+\chapter{Extra Material}\label{appendix-a}}
+
+\setstretch{1}
+
+Here is where we can put extra material that is useful, but perhaps not critical to the overall paper. This could include instruments, consent forms, additional syntax, proofs, supplemental graphics, etc.
+
+\hypertarget{appendix-b}{%
+\chapter{A Second Appendix}\label{appendix-b}}
+
+Here is where we can put extra material that is useful, but perhaps not critical to the overall paper. This could include instruments, consent forms, additional syntax, proofs, supplemental graphics, etc.
+
+
+\end{document}

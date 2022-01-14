@@ -1,0 +1,96 @@
+# Introduction
+
+This dissertation focuses on colorectal cancer (CRC). A murine primary model of colorectal cancer was used to study tumor response using diffuse reflectance spectroscopy ()
+
+## Colorectal cancer
+
+Colorectal cancer is defined as malignant growth of tissue (neoplasia) of the large intestine and rectum [@moeslein2001]. This disease ranks 2nd in terms of mortality US, with an estimated 53,200 deaths for 2020 [@siegel2020], despite a reduction in incidence  over the last 30 years as a result of early screening and improved diagnostics [@siegel2020]. About 50% of the patients that have locally-advanced disease will develop metastasis as the tumor classification progresses in this stage, while the recurrence-free survival rates decline from 89% to 55% for a 5-year follow up [tsikitis2014]. For both men and women CRC ranks third in terms of incidence (9% and 8% of total new cases, respectively) [@siegel2020]. The estimated annual economic burden of CRC in the US has been estimated between 5.3 and 6.5 billion dollars (2000 prices) [@jansman2007]. A worrying trend is seen by an increase in incidence in those below age 50 with a 2% annual increase [@benson2020].
+
+
+### Diagnosis of CRC 
+
+Screening for CRC is recommended for men and women above 50 years of age, and diagnostic evaluations are required symptomatic individuals that present rectal bleeding, abdominal pain, mucus in the stool, anemia, abdominal mass, or weight loss [@mccormick2002]. Colonoscopy, the gold standard for CRC diagnosis and screening, is presented in detail next.
+
+
+#### Colonoscopy
+
+The assessment of CRC requires a visual examination of the colon, and therefore colonoscopy is the standard for screening, diagnosis and surveillance both in CRC and ulcerative colitis [@siegel2017;@lieberman2014]. Colonoscopy requires bowel preparation before the procedure, which involves emptying the intestine of fecal matter without gross or histologic alteration of the colonic mucosa [@saltzman2015]. For the colonoscopic procedure, a colonoscope (a flexible tube that contains a fiberoptic light bundle, a biopsy forceps and other accessories) is inserted slowly into the patient to allow visual examination of the colon. On average, a colonoscopy with adequate bowel preparation lasts between 21 to 32 minutes when performed under sedation [@lin2017; @shehadeh2020]. Additional to the visual inspection, the goal of colonoscopy is to remove polyps (polypectomy), or biopsy acquisition for pathological evaluation; computed tomography colonography (CT) is used in conjunction as it allows to determine the staging of the disease [@duloy2018]. 
+
+Whereas CT, nuclear magnetic resonance (NMR), endorectal ultrasonography (USG), positron emission computed tomography (PET), and fecal occult test are technologies used to diagnose CRC [@widerska2014], only colonoscopy allows direct visualization of the colonic mucosa while allowing tissue acquisition [@brown2019]. However, colonoscopy is a technically challenging procedure due to its endoscopic nature; the results are largely impacted by the level of training and experience of the endoscopist [@boo2015] and miss rates for the detection of polyps that are smaller than 10 mm or flat is a significant limitation [@leufkens2012; @vanrijn2006].
+
+To address the limitation of polyp missing rates, deep learning algorithms such as convolutional neural networks (CNNs) have been used to automatically detect polyps in colonoscopy videos with up to 88% sensitivity [@tajbakhsh2016; @bernal2017]. Nonetheless, the implementation of CNNs is limited by the interpretability of the results, the time required for expert labeling, and the legal and ethical implications of the use of patient data and images in the development of commercially available algorithms [@pacal2020].
+
+#### CRC Staging
+
+As mentioned previously, colonoscopy and CT are used to determine the progression of CRC. The most common used staging system is the American Joint Committee on Cancer (AJCC) tumor-node-metastasis system (TNM): Under this system, tumor progression is classified using the letter "T", lymph node invasion with the letter "N" and metastasis with the letter "M" [@ajcc2017]. For example, a tumor that is found to have invaded the muscularis propria with one regional lymph positive and no distant metastasis would be classified as T2 N1a M0. Prognostically, the AJCC TNM system classifies tumors between stages 0 to IV [@greene2002], with each stage between I and IV being further sub-categorized from A to C [@ajcc2017]. Following on the previous example (T2 N1a M0 tumor) the corresponding prognostic classification would be IIIA.
+
+The term "locally advanced disease" is used for prognosis in patients with tumors in the colonic mucosa, or that have grown through the submucosa or muscularis propria and may have spread to lymph nodes, but that do not have spread to distant sites; in the TNM system these tumors correspond to stages IIA to IIIC, for which therapy is specified by the National Comprehensive Cancer Network (NCCN) guidelines [@benson2011].
+
+
+### Chemotherapy
+
+#### Adjuvant and Neoadjuvant strategies
+
+Until 2018, the NCCN guidelines for colon cancer[@benson2018] indicated the use of post-operative chemotherapy (adjuvant chemotherapy) following colectomy. However, in 2020 the NCCN guidelines recommended the use of neoadjuvant chemotherapy (NAC, also known as pre-operative chemotherapy) in locally advanced rectal cancer [@benson2020]. The results of the FOxTROT trial, an international randomized trial to assess the efficacy of NAC in colon cancer indicated that the use of NAC in CRC was safe, with histological regression in 59% of the patients [@seymour2019]. Ongoing clinical studies to assess the efficacy of NAC using different drugs are still undergoing [@roth2020].
+
+In 2021 "total neoadjuvant therapy", a combination of NAC and chemoradiotherapy before surgical resection was recommended as the standard of care for locally advanced colorectal cancer [@venook2021]. The drug regimen used is FOLFOX, an intravenous therapy consisting of oxaliplatin, leucovorin and 5-fluorouracil (5-FU). The dosing consists of 100 mg/m\textsuperscript{2}, 200 mg/m\textsuperscript{2} of leucovorin given over 2 hours followed by bolus 5-FU at a dose of 400 mg/m\textsuperscript{2} and a 46-h infusion of 5-FU at 2400 mg/ m\textsuperscript{2}. This cycle is repeated every 2 weeks and the overall treatment comprises 3 or 4 cycles (total 6-8 weeks) [@kato2010; @karoui2015].
+
+#### The FOLFOX regimen: drugs and scheduling
+
+The antimetabolite drug 5-FU is the principal component of the FOLFOX regimen. Its mechanism of action in this drug regimen is based in the transcriptional inhibition of the enzyme thymidylate synthase (TS), a nucleotide-synthesizing  enzyme. The drug is converted to fluorodeoxyuridine monophosphate, forming a stable complex with the enzyme and 5,10-methylenetetrahydrofolate which results in a reversible inactivation of the enzyme, leading to DNA and RNA damage [@housman2014;@longley2003].
+
+Leucovorin is a source of folate used to modulate the binding of the 5-FU metabolites to TS, and oxaliplatin ofrms links between two adjacent guanidine residues or also between guanidine or adenine, thus disrupting DNA replication and transcription [@longley2003;@arango2004].
+
+Regarding scheduling, it has been previously mentioned that the active intravenous injection/bolus phase of the FOLFOX regimen comprises 48 h, and that the cycle is repeated every two weeks [@karoui2015]. The reasons for the cycling are its toxicity and associated side-effects which include oxaliplatin-induced neurotoxicity [@tsai2016],and gastrointestinal system symptoms such as nausea and vomiting [@wielahojeska2015]. Moreover, the required cycling due to the use of high doses of chemotherapeutic agents (known as "maximum tolerated doses") has other therapeutic implications which will be discussed in the next section.
+
+
+#### Maximum tolerated doses: Challenges of a historical view of therapy
+
+The dosing paradigm in chemotherapy relies on the corollary "more is better", which translates in using maximum tolerated doses (MTDs), the largest possible amount of a drug that can given to the patient. In reality, the rationale for the use of MTD chemotherapy has historic roots: MTD chemotherapy was successful to treat acute lymphoblastic leukemia (ALL) in children [@skipper1970]. In an era where physicians were obsessed with increasing treatment doses to maximize tumor cell killing, the finding that MTD chemotherapy could be successful to treat ALL helped to establish MTD as a dogma in oncology [@mukherjee2010]. However, with high doses came high toxicity, and it became obvious that MTD chemotherapy required rest periods to allow the patient to recover [@benzekry2013]. 
+
+As the years passed by and oncology shifted from its empirical use of chemical warfare to treat cancer [@porrata2001] to the understanding of the molecular intricacies of the disease, it was realized that MTD chemotherapy worked in ALL because it could completely eliminate the tumor clone, but that other types of cancer had characteristics that made MTD chemotherapy ineffective in the long run [@kareva2015]. In fact, it is well established that regrowth and recurrence occur in most solid tumors where MTD chemotherapy is used [@andre2011;@pasquier2011;@pasquier2010]; despite this, the concept of "more is better" remained unaltered in the 20th century even in the light of the limitations of MTD chemotherapy.
+
+#### Metronomic Chemotherapy: A different approach
+
+A shift from the "more is better" corollary was proposed 16 years ago by the Kerbel and Bocci laboratories. Realizing the limitations of MTD chemotherapy, Browder _et.al_ examined the administration of lower and frequent doses of chemotherapeutic agents in a mouse xenograft model of lung carcinoma which led to to reduced tumor burden [@browder2000]. This concept was also examined by Klement _et. al_ in a mouse model of neuroblastoma leading to diminished tumor vascularity and transiet tumor regression [@klement2000]. Tthe term "metronomic chemotherapy" was coined to describe regimens of chemotherapeutic drugs at a lower and much frequent dosage than that used in MTD strategies, drawing an analogy from a _metronome_, a musical instrument that produces regular fixed ticks [@maiti2014]. One of the immediate advantages of metronomic chemotherapy (MET) is less toxicity for the patient [@natale2017].
+
+The main target of MET are the tumor endothelial cells, which cannot recover due to the continuous delivery of the therapy [@kerbel2004;@genfors2016]; it has been shown that MET leads to a reduction in the number of circulating pro-angiogenic endothelial cells due to a increase in thrombospondin 1 (TSP-1) which causes endothelial cell apoptosis and migration via CD36, while inhibiting proliferation [@stoelting2008;@lawler2012;@bocci2003]. Other anticancer properties of MET that have been reported include stimulation of the antitumor immune response and prevention of stromal activation [@andre2017]. 
+
+An important difference between MTD and MET is that the former uses an intravenous delivery, while the frequency of administration required for the latter makes oral intake the preferred method of delivery. For this reason capecitabine, or tegafur-uracil (both orally taken 5-FU prodrugs) are commonly used in MET strategies based on fluoropyrimidines [@alagizy2015;@he2011; @huang2017]. Capecitabine is converted to fluorouracil by the enzyme thymidine phosphorylase, which is found in higher levels in tumors than in normal tissue [@walko2005]. Tegafur-uracil is a combination drug that can achieve and adequate fluoruracil plasma concentration with low toxicity rate [@huang2017].
+
+##### Metronomic Chemotherapy as a neoadjuvant strategy 
+
+Clinical studies that have used MET have applied it to late-stage or recurrent cancers such as CRC or glioma to improve survival [@huang2017;@reardon2009;@romiti2013]. As NAC, MET has been used in clinical studies of breast and ovary cancer where low toxicity and a high pathological response were observed in the first case [@masuda2014;@hildebrand2016], and safety of this type of therapy was assessed in patients that were unfit for standard NAC [@dessai2016]. 
+However, it is not known what benefits MET could have when used as NAC in CRC. One of the  main themes of this dissertation was assessing tumor response using MET NAC in a primary model of CRC to determine its biological effects and its potential to treat locally-advanced CRC.
+
+##### In new territory, data is scarce
+
+Because MET chemotherapy is a relatively new field, a wide range of variation in dosage and frequency of administration of different drugs exists the literature. For example, studies of MET in pediatric solid tumors have reported the administration of cyclophosphamide (an alkylating agent that disrupts DNA duplication) ranging from daily 30 mg/m\textsuperscript{2} to 25 or 50 mg/m\textsuperscript{2} using a 2-week cycle [@stempak2006;@kumarage2020].
+
+Indeed, the pharmacokinetics (dose-concentration relationship) are not established for most MET regimens and the frequency and concentration of each drug are determined in a highly empirical manner [@bocci2016].This lack of standardization among different MET strategies poses a limitation in the determination of their effectiveness and any potential changes in their mechanisms of action.
+
+However, whereas in MTD NAC (FOLFOX regimen) 5-FU has a mechanism of action based solely on DNA disruption [@housman2014], it has been found that in MET chemotherapy 5-FU or its prodrugs (such as capecitabine) inhibit cell proliferation [@yuan2015;@shi2014]. Even more importantly, the same studies have shown that used in a metronomic manner, fluoropyrimidines also impair blood vessel development in tumors. 
+
+#### Angiogenesis: A Hallmark of cancer
+
+The term angiogenesis refers to the development of new vasculature to provide a flux of oxygen and blood in the periphery and in the tumor itself, and is considered one of the "hallmarks" of cancer that facilitates tumor growth and metastasis [@farnsworth2013;@hanahan2011]. Under this premise,  because tumors growth is restricted to $\approx$ 2 mm\textsuperscript{3} without blood vessels [@muthukkaruppan1982], they develop blood vasculature by sprouting or intussusception from existing vessels [@carmeliet2000]. The process is regulated by soluble factors and their receptors, among which vascular endothelial growth factor (VEGF) has a prominent role [@hanahan2000]. The recognition of the importance of VEGF in tumor angiogenesis provided the rationale for researchers to study it as a therapeutic target [@ferrara2004].
+
+##### VEGF and its role as a therapeutic target
+
+In 1971, Folkman proposed anti-angiogenesis as an anticancer strategy, and multiple groups raced to find and isolate the "tumor angiogenesis factor", which was later identified as VEGF [@ferrara2004]. It is now known that VEGF is a member of the platelet derived growth factor (PDGF) family, which includes VEGF (also known as VEGF-A), VEGF-B, VEGF-C and VEGF-D. There are at least four isoforms of VEGF-A, the 165-aminoacid form being the predominant species [@carmeliet2005]. VEGF-A binds primarily to the receptor VEGFR2 that is located in the surface of endothelial cells (ECs, which line established blood vessels) to start the cascade of signals that lead to proliferation, migration, and vascular development [@apte2019]. 
+In tumors, VEGF-mediated angiogenesis of ECs is driven by chemothaxis, the migration toward a gradient of soluble attractants [@lamalice2007]. Because tumors overexpress VEGF, its interaction with VEGFR2 in ECs causes migration by contributing to formation of stress fibers [@lamalice2007]. The migration of ECs is a multi-step process controlled by different signaling pathways, among which the Notch pathway plays an important role [@eilken2010]. It has been shown that when exposed to VEGF signaling, only some ECs acquire the "tip cell" phenotype (long and motile filopodia that extend towards the source of pro-angiogenic factors), while other ECs form the stalk of the vascular sprout. 
+The complete sprouting process of ECs in angiogenesis includes  breakdown of the basement membrane, and new extracellular matrix deposition around the extending sprout, loss of perycite coverage, and connection between bridging sprouts or nearby vessels (anastomosis), and assembly of new lumen-containig tubules [@lamalice2007; eilken2010]. 
+
+Targeting the VEGF pathway produced different drugs aimed at reducing tumor vasculature such as bevacizumab (monoclonal antibody that binds to VEGF) , sunitinib (VEGFR2 inhibitor), and aflibercept (VEGF inhibitor) [@vasudev2014]. From these drugs, bevacizumab has been the most used and studied and can be given in metastatic CRC in conjuction with chemotherapy [@benson2018]. However, further studies revealed that angiogenesis is a complex process that is not solely mediated by VEGF. Angiopoteins, transcription factors such as hypoxia inducible factor 1$\alpha$ (HIF-1$\alpha$), cytokines, chemokines such as CXCL8, CXCL1, CCL2, chaperone proteins (such as HSP90), and the activation of certain pathways such as AkT or mTOR also elicit the formation of blood vessels. Additionally, monocytes, tumor associated macrophages and stromal cells are receptive of the gradient established by different chemokines causing them to migrate and contribute to new vessel formation [@yaddanapudi2017;@kryczek2007].
+
+#### Hypoxia: its implications on angiogenesis and metabolism
+
+One of the major drivers of the expression of VEGF is hypoxia (low oxygen tension). Under low oxygen conditions, gene transcription of the hypoxia inducible factors is allowed, the most important being HIF-1$\alpha$, which in turn induces the expression of _VEGF_, thus promoting angiogenesis [@simon2017]. Under normoxic conditions, the $\alpha$-subunit of HIF-1 is ubiquitinated by the von-Hippel-Lindau protein (pVHL), and suffers proteasomal degradation [@tirpe2019]. Under hypoxic conditions, the $\alpha$ unit of HIF-1 is not ubiquitinated, and translocates into the nucleus, where it dimerizes with HIF-1$\beta$, generating an active HIF-1 form that then activates the transcription of VEGF [@tirpe2019]. 
+
+Beyond regulating VEGF, HIF-1 also targets genes involved in glucose metabolism. It activates the transcription of the genes that encode the glucose transporters GLUT1 and GLUT3, 
+
+##### VEGF HIF-1 independent expression
+
+## References
+
+<div id="refs"></div>
